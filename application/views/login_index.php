@@ -108,17 +108,17 @@
                                     </div>
                                 </div>
                                 <div class="card-body">
-                                    <form class="form-horizontal">
+                                    <form class="form-horizontal" method="post" action="login/log_in">
                                         <div class="form-group">
                                             <label for="username" class="col-sm-2 control-label">Usuario</label>
                                             <div class="col-sm-10">
-                                                <input type="username" class="form-control" id="username" placeholder="Nombre Usuario">
+                                                <input type="username" name="username" class="form-control" id="username" placeholder="Nombre Usuario">
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label for="password" class="col-sm-2 control-label">Contraseña</label>
                                             <div class="col-sm-10">
-                                                <input type="password" class="form-control" id="password" placeholder="Contraseña">
+                                                <input type="password" name="password" class="form-control" id="password" placeholder="Contraseña">
                                             </div>
                                         </div>
                                         

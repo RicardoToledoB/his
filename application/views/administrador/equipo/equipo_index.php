@@ -36,7 +36,7 @@
                         <ol class="breadcrumb navbar-breadcrumb">
                             <li>His-Sidra</li>
                             <li>Administrador</li>
-                            <li class="active">Home</li>
+                            <li class="active">Equipo Proyecto</li>
                         </ol>
                         <button type="button" class="navbar-right-expand-toggle pull-right visible-xs">
                             <i class="fa fa-th icon"></i>
@@ -112,7 +112,7 @@
                             </button>
                         </div>
                         <ul class="nav navbar-nav">
-                            <li class="active">
+                            <li>
                                 <a href=<?php echo (base_url() . 'index.php/administrador/home') ?>>
                                     <span class="icon fa fa-tachometer"></span><span class="title">Panel de Control</span>
                                 </a>
@@ -157,7 +157,7 @@
                                 </a>
                             </li>
                            
-                            <li>
+                            <li class="active">
                                 <a href=<?php echo (base_url() . 'index.php/administrador/equipo') ?>>
                                     <span class="icon fa fa-thumbs-o-up"></span><span class="title">Nuestro Equipo</span>
                                 </a>
@@ -171,7 +171,7 @@
             <div class="container-fluid">
                 <div class="side-body">
                     <div class="page-title">
-                        <span class="title">Bievenido - Administrativo</span>
+                        <span class="title">Bienvenido - Administrador</span>
                         <div class="description">Usuario:<?php echo $nombre ?> / Mi Correo:<?php echo $email ?> </div>
                     </div>
                     
@@ -182,68 +182,11 @@
                             <div class="card">
                                 <div class="card-header">
                                     <div class="card-title">
-                                        <div class="title">Modulos Administrativo </div>
+                                        <div class="title">Contactos</div>
                                     </div>
                                 </div>
                                 <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-                                            <a href="#">
-                                                <div class="card red summary-inline">
-                                                    <div class="card-body">
-                                                        <i class="icon fa fa-users fa-4x"></i>
-                                                        <div class="content">
-                                                            <div class="title">50</div>
-                                                            <div class="sub-title">Ir a Usuarios</div>
-                                                        </div>
-                                                        <div class="clear-both"></div>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </div>
-                                        <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-                                            <a href="#">
-                                                <div class="card yellow summary-inline">
-                                                    <div class="card-body">
-                                                        <i class="icon fa fa-inbox fa-4x"></i>
-                                                        <div class="content">
-                                                            <div class="title">23</div>
-                                                            <div class="sub-title">Ir a Servicios</div>
-                                                        </div>
-                                                        <div class="clear-both"></div>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </div>
-                                        <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-                                            <a href="#">
-                                                <div class="card green summary-inline">
-                                                    <div class="card-body">
-                                                        <i class="icon fa fa-tags fa-4x"></i>
-                                                        <div class="content">
-                                                            <div class="title">280</div>
-                                                            <div class="sub-title">Ir a Unidades</div>
-                                                        </div>
-                                                        <div class="clear-both"></div>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </div>
-                                        <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-                                            <a href="#">
-                                                <div class="card blue summary-inline">
-                                                    <div class="card-body">
-                                                        <i class="icon fa fa-cart-plus fa-4x"></i>
-                                                        <div class="content">
-                                                            <div class="title">16</div>
-                                                            <div class="sub-title">Ir a Reportes</div>
-                                                        </div>
-                                                        <div class="clear-both"></div>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </div>
-                                    </div>
+                                    Contenido aca...
                                 </div>
                             </div>
                         </div>

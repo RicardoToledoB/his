@@ -50,10 +50,10 @@
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-comments-o"></i></a>
                             <ul class="dropdown-menu animated fadeInDown">
                                 <li class="title">
-                                    Notification <span class="badge pull-right">0</span>
+                                    Notificaciones <span class="badge pull-right">0</span>
                                 </li>
                                 <li class="message">
-                                    No new notification
+                                    No tiene Mensajes Pendientes
                                 </li>
                             </ul>
                         </li>
@@ -61,28 +61,19 @@
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-star-half-o"></i> 4</a>
                             <ul class="dropdown-menu danger  animated fadeInDown">
                                 <li class="title">
-                                    Notification <span class="badge pull-right">4</span>
+                                    Usuario <span class="badge pull-right">0</span>
                                 </li>
                                 <li>
                                     <ul class="list-group notifications">
+                                        
                                         <a href="#">
                                             <li class="list-group-item">
-                                                <span class="badge">1</span> <i class="fa fa-exclamation-circle icon"></i> new registration
-                                            </li>
-                                        </a>
-                                        <a href="#">
-                                            <li class="list-group-item">
-                                                <span class="badge success">1</span> <i class="fa fa-check icon"></i> new orders
-                                            </li>
-                                        </a>
-                                        <a href="#">
-                                            <li class="list-group-item">
-                                                <span class="badge danger">2</span> <i class="fa fa-comments icon"></i> customers messages
+                                                <span class="badge success"></span> <i class="fa fa-check icon"></i> Reportar Error
                                             </li>
                                         </a>
                                         <a href="#">
                                             <li class="list-group-item message">
-                                                view all
+                                               Ver errores reportados.
                                             </li>
                                         </a>
                                     </ul>
@@ -90,18 +81,16 @@
                             </ul>
                         </li>
                         <li class="dropdown profile">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Emily Hart <span class="caret"></span></a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><?php echo $nombre ?><span class="caret"></span></a>
                             <ul class="dropdown-menu animated fadeInDown">
-                                <li class="profile-img">
-                                    <img src="../../img/profile/picjumbo.com_HNCK4153_resize.jpg" class="profile-img">
-                                </li>
+                                
                                 <li>
                                     <div class="profile-info">
-                                        <h4 class="username">Emily Hart</h4>
-                                        <p>emily_hart@email.com</p>
+                                        <h4 class="username"><?php echo $nombre ?></h4>
+                                        <p><?php echo "Contacto:". $email ?></p>
                                         <div class="btn-group margin-bottom-2x" role="group">
-                                            <button type="button" class="btn btn-default"><i class="fa fa-user"></i> Profile</button>
-                                            <button type="button" class="btn btn-default"><i class="fa fa-sign-out"></i> Logout</button>
+                                            <button type="button" class="btn btn-default"><i class="fa fa-user"></i> Perfil</button>
+                                             <a href=<?php echo (base_url() . 'index.php/login/log_out') ?>><button type="button" class="btn btn-default"><i class="fa fa-sign-out"></i> Cerrar</button></a>
                                         </div>
                                     </div>
                                 </li>
@@ -123,70 +112,23 @@
                             </button>
                         </div>
                         <ul class="nav navbar-nav">
-                            <li>
-                                <a href="../index.html">
-                                    <span class="icon fa fa-tachometer"></span><span class="title">Dashboard</span>
+                            <li class="active">
+                                <a href=<?php echo (base_url() . 'index.php/administrador/home') ?>>
+                                    <span class="icon fa fa-tachometer"></span><span class="title">Panel de Control</span>
                                 </a>
                             </li>
-                            <li class="panel panel-default dropdown">
-                                <a data-toggle="collapse" href="#dropdown-element">
-                                    <span class="icon fa fa-desktop"></span><span class="title">UI Kits</span>
-                                </a>
-                                <!-- Dropdown level 1 -->
-                                <div id="dropdown-element" class="panel-collapse collapse">
-                                    <div class="panel-body">
-                                        <ul class="nav navbar-nav">
-                                            <li><a href="../ui-kits/grid.html">Grid</a></li>
-                                            <li><a href="../ui-kits/theming.html">Theming</a></li>
-                                            </li>
-                                            <li><a href="../ui-kits/button.html">Buttons</a>
-                                            </li>
-                                            <li><a href="../ui-kits/card.html">Cards</a>
-                                            </li>
-                                            <li><a href="../ui-kits/list.html">Lists</a>
-                                            </li>
-                                            <li><a href="../ui-kits/modal.html">Modals</a>
-                                            </li>
-                                            <li><a href="../ui-kits/alert.html">Alerts & Toasts</a>
-                                            </li>
-                                            <li><a href="../ui-kits/panel.html">Panels</a>
-                                            </li>
-                                            <li><a href="../ui-kits/loader.html">Loaders</a>
-                                            </li>
-                                            <li><a href="../ui-kits/step.html">Tabs & Steps</a>
-                                            </li>
-                                            <li><a href="../ui-kits/other.html">Other</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="panel panel-default dropdown">
-                                <a data-toggle="collapse" href="#dropdown-table">
-                                    <span class="icon fa fa-table"></span><span class="title">Table</span>
-                                </a>
-                                <!-- Dropdown level 1 -->
-                                <div id="dropdown-table" class="panel-collapse collapse">
-                                    <div class="panel-body">
-                                        <ul class="nav navbar-nav">
-                                            <li><a href="../table/table.html">Table</a>
-                                            </li>
-                                            <li><a href="../table/datatable.html">Datatable</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="active panel panel-default dropdown">
+                            
+                           
+                            <li class=" panel panel-default dropdown">
                                 <a data-toggle="collapse" href="#dropdown-form">
-                                    <span class="icon fa fa-file-text-o"></span><span class="title">Form</span>
+                                    <span class="icon fa fa-file-text-o"></span><span class="title">Mantenedores</span>
                                 </a>
                                 <!-- Dropdown level 1 -->
                                 <div id="dropdown-form" class="panel-collapse collapse">
                                     <div class="panel-body">
                                         <ul class="nav navbar-nav">
-                                            <li><a href="#">Log In</a>
-                                            </li>
+                                            <li><a href=<?php echo (base_url() . 'index.php/administrador/servicio') ?>>Servicio</a></li>
+                                            <li><a href=<?php echo (base_url() . 'index.php/administrador/unidad') ?>>Unidad</a></li>
 
                                         </ul>
                                     </div>
@@ -195,57 +137,29 @@
                             <!-- Dropdown-->
                             <li class="panel panel-default dropdown">
                                 <a data-toggle="collapse" href="#component-example">
-                                    <span class="icon fa fa-cubes"></span><span class="title">Components</span>
+                                    <span class="icon fa fa-cubes"></span><span class="title">Reportes</span>
                                 </a>
                                 <!-- Dropdown level 1 -->
                                 <div id="component-example" class="panel-collapse collapse">
                                     <div class="panel-body">
                                         <ul class="nav navbar-nav">
-                                            <li><a href="../components/pricing-table.html">Pricing Table</a>
+                                            <li><a href="#">Reporte 1</a>
                                             </li>
-                                            <li><a href="../components/chartjs.html">Chart.JS</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </li>
-                            <!-- Dropdown-->
-                            <li class="panel panel-default dropdown">
-                                <a data-toggle="collapse" href="#dropdown-example">
-                                    <span class="icon fa fa-slack"></span><span class="title">Page Example</span>
-                                </a>
-                                <!-- Dropdown level 1 -->
-                                <div id="dropdown-example" class="panel-collapse collapse">
-                                    <div class="panel-body">
-                                        <ul class="nav navbar-nav">
-                                            <li><a href="../pages/login.html">Login</a>
-                                            </li>
-                                            <li><a href="../pages/index.html">Landing Page</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </li>
-                            <!-- Dropdown-->
-                            <li class="panel panel-default dropdown">
-                                <a data-toggle="collapse" href="#dropdown-icon">
-                                    <span class="icon fa fa-archive"></span><span class="title">Icons</span>
-                                </a>
-                                <!-- Dropdown level 1 -->
-                                <div id="dropdown-icon" class="panel-collapse collapse">
-                                    <div class="panel-body">
-                                        <ul class="nav navbar-nav">
-                                            <li><a href="../icons/glyphicons.html">Glyphicons</a>
-                                            </li>
-                                            <li><a href="../icons/font-awesome.html">Font Awesomes</a>
+                                            <li><a href="#">Reporte 2</a>
                                             </li>
                                         </ul>
                                     </div>
                                 </div>
                             </li>
                             <li>
-                                <a href="#">
-                                    <span class="icon fa fa-thumbs-o-up"></span><span class="title">License</span>
+                                <a href=<?php echo (base_url() . 'index.php/administrador/usuario') ?>>
+                                    <span class="icon fa fa-users"></span><span class="title">Cuenta Usuario</span>
+                                </a>
+                            </li>
+                           
+                            <li>
+                                <a href=<?php echo (base_url() . 'index.php/administrador/equipo') ?>>
+                                    <span class="icon fa fa-thumbs-o-up"></span><span class="title">Nuestro Equipo</span>
                                 </a>
                             </li>
                         </ul>
@@ -258,7 +172,7 @@
                 <div class="side-body">
                     <div class="page-title">
                         <span class="title">Bievenido - Administrador</span>
-                        <div class="description">Ingrese Usuario / Contraseña  de Sistema</div>
+                        <div class="description">Usuario:<?php echo $nombre ?> / Mi Correo:<?php echo $email ?> </div>
                     </div>
                     
                     
@@ -272,9 +186,64 @@
                                     </div>
                                 </div>
                                 <div class="card-body">
-                                    <form class="form-horizontal">
-                                        Contenido Aca...
-                                    </form>
+                                    <div class="row">
+                                        <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                                            <a href="#">
+                                                <div class="card red summary-inline">
+                                                    <div class="card-body">
+                                                        <i class="icon fa fa-users fa-4x"></i>
+                                                        <div class="content">
+                                                            <div class="title">50</div>
+                                                            <div class="sub-title">Ir a Usuarios</div>
+                                                        </div>
+                                                        <div class="clear-both"></div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                                            <a href="#">
+                                                <div class="card yellow summary-inline">
+                                                    <div class="card-body">
+                                                        <i class="icon fa fa-inbox fa-4x"></i>
+                                                        <div class="content">
+                                                            <div class="title">23</div>
+                                                            <div class="sub-title">Ir a Servicios</div>
+                                                        </div>
+                                                        <div class="clear-both"></div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                                            <a href="#">
+                                                <div class="card green summary-inline">
+                                                    <div class="card-body">
+                                                        <i class="icon fa fa-tags fa-4x"></i>
+                                                        <div class="content">
+                                                            <div class="title">280</div>
+                                                            <div class="sub-title">Ir a Unidades</div>
+                                                        </div>
+                                                        <div class="clear-both"></div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                                            <a href="#">
+                                                <div class="card blue summary-inline">
+                                                    <div class="card-body">
+                                                        <i class="icon fa fa-cart-plus fa-4x"></i>
+                                                        <div class="content">
+                                                            <div class="title">16</div>
+                                                            <div class="sub-title">Ir a Reportes</div>
+                                                        </div>
+                                                        <div class="clear-both"></div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>

@@ -1,9 +1,8 @@
 <?php
 
-class Servicio extends CI_Controller{
+class Equipo extends CI_Controller{
     public function __construct() {
         parent::__construct();
-        $this->load->model('Servicio_model');
         $this->load->helper('url');
         $this->load->library('session');
         if ($this->session->userdata('logueado')) {
@@ -22,8 +21,7 @@ class Servicio extends CI_Controller{
         $data['nombre'] = $this->session->userdata('nombre');
         $data['tipo']=$this->session->userdata('tipo');
         $data['email']=$this->session->userdata('email');
-        $data['servicio']=$this->Servicio_model->list_all();
-        $this->load->view('administrador/servicio/servicio_index',$data);
+        $this->load->view('administrador/equipo/equipo_index',$data);
     }
-    
 }
+
