@@ -25,13 +25,12 @@ enabled int(10),
 creado_por int(10),
 fecha_creacion datetime,
 estamento_id int(10),
-establecimiento_id int(10),
 email varchar(25));
 
 drop table Usuarios_Establecimientos;
 create table Usuarios_Establecimientos(
 usuario_id int(10),
-establecimiento_id int(10));
+establecimiento_id int(50));
 
 drop table Estamentos;
 create table Estamentos(
@@ -43,7 +42,7 @@ estado varchar(25));
 drop table Establecimientos;
 create table Establecimientos(
 establecimiento_id int(10) primary key not null auto_increment,
-nombre varchar(25),
+nombre varchar(50),
 codigo varchar(25),
 estado varchar(25));
 
@@ -51,7 +50,8 @@ drop table Logs;
 create table Logs(
 log_id int(10) primary key not null auto_increment,
 fecha_ingeso datetime,
-usuario_id int(10));
+usuario_id int(10)
+establecimiento_id int(10));
 
 drop table Usuarios_Servicios;
 create table Usuarios_Servicios(
@@ -65,7 +65,8 @@ nombre varchar(25),
 estado varchar(25),
 creado_por int(10),
 fecha_creacion datetime,
-codigo varchar(25));
+codigo varchar(25),
+establecimiento_id int(10));
 
 drop table Unidades;
 create table Unidades(
@@ -75,14 +76,16 @@ estado varchar(25),
 servicio_id int(10),
 creado_por int(10),
 fecha_creacion datetime,
-codigo varchar(25));
+codigo varchar(25),
+establecimiento_id int(10));
 
 drop table Bloqueos;
 create table Bloqueos(
 bloqueo_id int(10) primary key not null auto_increment,
 motivo varchar(25),
 codigo varchar(25),
-estado varchar(25));
+estado varchar(25),
+establecimiento_id int(10));
 
 drop table Agendas;
 create table Agendas(
@@ -95,7 +98,8 @@ hora_inicio time,
 hora_termino time,
 creado_por int(10),
 fecha_creacion datetime,
-estado varchar(20));
+estado varchar(20),
+establecimiento_id int(10));
 
 drop table Detalle_Agendas;
 create table Detalle_Agendas(
@@ -106,7 +110,8 @@ fecha_termino date,
 hora_inicio time,
 hora_termino time,
 estado varchar(25),
-agenda_id int(10));
+agenda_id int(10),
+establecimiento_id int(10));
 
 drop table Citaciones;
 create table Citaciones(
@@ -120,21 +125,24 @@ tipo_atencion_id int(10),
 estado varchar(25),
 creado_por int(10),
 fecha_creacion datetime,
-estado_cita_id int(10));
+estado_cita_id int(10)
+establecimiento_id int(10));
 
 drop table Estados_Citas;
 create table Estados_Citas(
 estado_cita_id int(10) primary key not null auto_increment,
 nombre varchar(25),
 codigo varchar(25),
-estado varchar(25));
+estado varchar(25),
+establecimiento_id int(10));
 
 drop table Tipo_Atenciones;
 create table Tipo_Atenciones(
 tipo_atencion_id int(10) primary key not null auto_increment,
 nombre varchar(25),
 codigo varchar(25),
-estado varchar(25));
+estado varchar(25),
+establecimiento_id int(10));
 
 drop table Atenciones;
 create table Atenciones(
@@ -142,7 +150,8 @@ atencion_id int(10) primary key not null auto_increment,
 nombre varchar(25),
 codigo varchar(25),
 estado varchar(25),
-tipo_atencion_id int(10));
+tipo_atencion_id int(10),
+establecimiento_id int(10));
 
 
 drop table Sistema_Previsiones;
@@ -182,7 +191,8 @@ codigo varchar(25),
 estado varchar(25),
 fecha_creacion date,
 creado_por int(10),
-ficha_id int(10));
+ficha_id int(10)
+establecimiento_id int(10));
 
 drop table Fichas;
 create table Fichas(
@@ -190,7 +200,8 @@ ficha_id int(10) primary key not null auto_increment,
 codigo varchar(25),
 estado varchar(25),
 fecha_creacion date,
-creado_por int(10));
+creado_por int(10),
+establecimiento_id int(10));
 
 drop table Movimientos_Fichas;
 create table Movimientos_Fichas(
@@ -198,7 +209,8 @@ movimiento_ficha_id int(10) primary key not null auto_increment,
 ficha_id int(10),
 estado varchar(25),
 creado_por int(10),
-fecha_movimiento date);
+fecha_movimiento date,
+establecimiento_id int(10));
 
 drop table Identificaciones;
 create table Identificaciones(
@@ -306,11 +318,11 @@ centro_salud_id int(10));
 insert into Roles(estado,creado_por,fecha_creacion,tipo) values('activo',1,'2016/03/31 13:00:01','administrador');
 insert into Roles(estado,creado_por,fecha_creacion,tipo) values('activo',2,'2016/04/11 12:59:43','administrativo');
 
-insert into Usuarios(rut,dv,nombre,apepat,apemat,fec_nac,username,password,enabled,creado_por,fecha_creacion,estamento_id,establecimiento_id,email,rol_id) values('15582517','0','Ricardo','Toledo','Barria','1984/07/31','rtoledo','1234',1,1,'2015/01/01 12:00:01',1,1,'rtoledo@gmail.com',1);
-insert into Usuarios(rut,dv,nombre,apepat,apemat,fec_nac,username,password,enabled,creado_por,fecha_creacion,estamento_id,establecimiento_id,email,rol_id) values('15905884','0','Iván Alonso','Andrade','Cabrera','1985/03/02','iandrade','1234',1,2,'2016/04/11 13:13:02',1,1,'ivanandrade@gmail.com',1);
-insert into Usuarios(rut,dv,nombre,apepat,apemat,fec_nac,username,password,enabled,creado_por,fecha_creacion,estamento_id,establecimiento_id,email,rol_id) values('10063397','3','Juan','Pérez','Gómez','1990/10/02','jperez','1234',1,2,'2016/04/11 15:00:00',3,2,'juanperez@gmail.com',2);
-insert into Usuarios(rut,dv,nombre,apepat,apemat,fec_nac,username,password,enabled,creado_por,fecha_creacion,estamento_id,establecimiento_id,email,rol_id) values('89565247','3','Jimena','Muñoz','Cárdenas','1950/12/09','jmuñoz','1234',1,2,'2016/04/11 17:30:01',4,3,'jmuñoz@gmail.com',2);
-insert into Usuarios(rut,dv,nombre,apepat,apemat,fec_nac,username,password,enabled,creado_por,fecha_creacion,estamento_id,establecimiento_id,email,rol_id) values('21849349','1','Carlos','Cáceres','Pinto','1988/05/22','ccaceres','1234',1,2,'2016/04/11 16:02:00',5,4,'ccaceresp@gmail.com',2);
+insert into Usuarios(rut,dv,nombre,apepat,apemat,fec_nac,username,password,enabled,creado_por,fecha_creacion,estamento_id,email,rol_id) values('15582517','0','Ricardo','Toledo','Barria','1984/07/31','rtoledo','1234',1,1,'2015/01/01 12:00:01',1,'rtoledo@gmail.com',1);
+insert into Usuarios(rut,dv,nombre,apepat,apemat,fec_nac,username,password,enabled,creado_por,fecha_creacion,estamento_id,email,rol_id) values('15905884','0','Iván Alonso','Andrade','Cabrera','1985/03/02','iandrade','1234',1,2,'2016/04/11 13:13:02',1,'ivanandrade@gmail.com',1);
+insert into Usuarios(rut,dv,nombre,apepat,apemat,fec_nac,username,password,enabled,creado_por,fecha_creacion,estamento_id,email,rol_id) values('10063397','3','Juan','Pérez','Gómez','1990/10/02','jperez','1234',1,2,'2016/04/11 15:00:00',3,'juanperez@gmail.com',2);
+insert into Usuarios(rut,dv,nombre,apepat,apemat,fec_nac,username,password,enabled,creado_por,fecha_creacion,estamento_id,email,rol_id) values('89565247','3','Jimena','Muñoz','Cárdenas','1950/12/09','jmuñoz','1234',1,2,'2016/04/11 17:30:01',4,'jmuñoz@gmail.com',2);
+insert into Usuarios(rut,dv,nombre,apepat,apemat,fec_nac,username,password,enabled,creado_por,fecha_creacion,estamento_id,email,rol_id) values('21849349','1','Carlos','Cáceres','Pinto','1988/05/22','ccaceres','1234',1,2,'2016/04/11 16:02:00',5,'ccaceresp@gmail.com',2);
 
 insert into Establecimientos(nombre,codigo,estado) values('Hospital Clinico Magallanes','H01','activo');
 insert into Establecimientos(nombre,codigo,estado) values('Hospital Augusto Essmann','H02','activo');
@@ -329,23 +341,23 @@ insert into Usuarios_Establecimientos(usuario_id,establecimiento_id) values(3,2)
 insert into Usuarios_Establecimientos(usuario_id,establecimiento_id) values(4,3);
 insert into Usuarios_Establecimientos(usuario_id,establecimiento_id) values(5,4);
 
-insert into Logs(fecha_ingreso,usuario_id) values('2016/01/31 08:00:01',1);
-insert into Logs(fecha_ingreso,usuario_id) values('2016/01/29 09:15:00',2);
-insert into Logs(fecha_ingreso,usuario_id) values('2016/01/30 12:02:01',2);
-insert into Logs(fecha_ingreso,usuario_id) values('2016/01/30 13:00:00',1);
+insert into Logs(fecha_ingreso,usuario_id,establecimiento_id) values('2016/01/31 08:00:01',1,1);
+insert into Logs(fecha_ingreso,usuario_id,establecimiento_id) values('2016/01/29 09:15:00',2,1);
+insert into Logs(fecha_ingreso,usuario_id,establecimiento_id) values('2016/01/30 12:02:01',2,1);
+insert into Logs(fecha_ingreso,usuario_id,establecimiento_id) values('2016/01/30 13:00:00',1,1);
 
 
-insert into Servicios(nombre,estado,creado_por,fecha_creacion,codigo) values('admision','activo',1,'2015/01/01 08:00:00','0001');
-insert into Servicios(nombre,estado,creado_por,fecha_creacion,codigo) values('cirugia','activo',2,'2016/04/11 09:00:01','0002');
-insert into Servicios(nombre,estado,creado_por,fecha_creacion,codigo) values('medicina','activo',2,'2016/04/11 10:11:00','0003');
-insert into Servicios(nombre,estado,creado_por,fecha_creacion,codigo) values('traumatologia','activo',2,'2016/04/11 08:03:00','0004');
-insert into Servicios(nombre,estado,creado_por,fecha_creacion,codigo) values('pediatria','activo',2,'2016/04/11 08:00:30','0005');
+insert into Servicios(nombre,estado,creado_por,fecha_creacion,codigo,establecimiento_id) values('admision','activo',1,'2015/01/01 08:00:00','0001',1);
+insert into Servicios(nombre,estado,creado_por,fecha_creacion,codigo,establecimiento_id) values('cirugia','activo',2,'2016/04/11 09:00:01','0002',1);
+insert into Servicios(nombre,estado,creado_por,fecha_creacion,codigo,establecimiento_id) values('medicina','activo',2,'2016/04/11 10:11:00','0003',1);
+insert into Servicios(nombre,estado,creado_por,fecha_creacion,codigo,establecimiento_id) values('traumatologia','activo',2,'2016/04/11 08:03:00','0004',1);
+insert into Servicios(nombre,estado,creado_por,fecha_creacion,codigo,establecimiento_id) values('pediatria','activo',2,'2016/04/11 08:00:30','0005',1);
 
-insert into Unidades(nombre,estado,servicio_id,creado_por,fecha_creacion,codigo) values('admision','activo',1,1,'2015/02/01 10:30:31','0001-1');
-insert into Unidades(nombre,estado,servicio_id,creado_por,fecha_creacion,codigo) values('cirugia adulto','activo',2,2,'2016/04/11 11:15:30','0002-1');
-insert into Unidades(nombre,estado,servicio_id,creado_por,fecha_creacion,codigo) values('cirugia bariatrica','activo',2,2,'2016/04/11 09:00:00','0002-2');
-insert into Unidades(nombre,estado,servicio_id,creado_por,fecha_creacion,codigo) values('medicina general','activo',3,2,'2016/04/11 11:30:01','0003-1');
-insert into Unidades(nombre,estado,servicio_id,creado_por,fecha_creacion,codigo) values('pabellon de yeso','activo',4,2,'2016/04/11 11:02:01','0004-1');
+insert into Unidades(nombre,estado,servicio_id,creado_por,fecha_creacion,codigo,establecimiento_id) values('admision','activo',1,1,'2015/02/01 10:30:31','0001-1',1);
+insert into Unidades(nombre,estado,servicio_id,creado_por,fecha_creacion,codigo,establecimiento_id) values('cirugia adulto','activo',2,2,'2016/04/11 11:15:30','0002-1',1);
+insert into Unidades(nombre,estado,servicio_id,creado_por,fecha_creacion,codigo,establecimiento_id) values('cirugia bariatrica','activo',2,2,'2016/04/11 09:00:00','0002-2',1);
+insert into Unidades(nombre,estado,servicio_id,creado_por,fecha_creacion,codigo,establecimiento_id) values('medicina general','activo',3,2,'2016/04/11 11:30:01','0003-1',1);
+insert into Unidades(nombre,estado,servicio_id,creado_por,fecha_creacion,codigo,establecimiento_id) values('pabellon de yeso','activo',4,2,'2016/04/11 11:02:01','0004-1',1);
 
 insert into Usuarios_Servicios(usuario_id,servicio_id) values(1,1);
 insert into Usuarios_Servicios(usuario_id,servicio_id) values(2,1);
@@ -1514,11 +1526,11 @@ insert into Paises_nac(nombre,estado) values('Nueva Caledonia','activo');
 insert into Paises_nac(nombre,estado) values('Wallis Y Fortuna','activo');
 insert into Paises_nac(nombre,estado) values('Samoa Americana','activo');
 
-insert into fichas(codigo,estado,fecha_creacion,creado_por) values('100000','activo','2016/04/12 15:53:00',2);
-insert into fichas(codigo,estado,fecha_creacion,creado_por) values('200001','activo','2016/04/12 15:53:00',1);
-insert into fichas(codigo,estado,fecha_creacion,creado_por) values('300020','activo','2016/04/12 15:53:00',2);
-insert into fichas(codigo,estado,fecha_creacion,creado_por) values('400544','activo','2016/04/12 15:53:00',2);
-insert into fichas(codigo,estado,fecha_creacion,creado_por) values('499999','activo','2016/04/12 15:53:00',1);
+insert into fichas(codigo,estado,fecha_creacion,creado_por,establecimiento_id) values('100000','activo','2016/04/12 15:53:00',2,1);
+insert into fichas(codigo,estado,fecha_creacion,creado_por,establecimiento_id) values('200001','activo','2016/04/12 15:53:00',1,1);
+insert into fichas(codigo,estado,fecha_creacion,creado_por,establecimiento_id) values('300020','activo','2016/04/12 15:53:00',2,1);
+insert into fichas(codigo,estado,fecha_creacion,creado_por,establecimiento_id) values('400544','activo','2016/04/12 15:53:00',2,1);
+insert into fichas(codigo,estado,fecha_creacion,creado_por,establecimiento_id) values('499999','activo','2016/04/12 15:53:00',1,1);
 
 
 insert into estados_civil(nombre,codigo,estado) values('Soltero/a','1','activo');

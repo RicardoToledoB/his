@@ -21,7 +21,7 @@
         <link rel="stylesheet" href="<?php echo base_url("resources/css/style.css"); ?>" />
         <link rel="stylesheet" href="<?php echo base_url("resources/css/themes/flat-blue.css"); ?>" />
 
-        <link href="//cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/e8bddc60e73c1ec2475f827be36e1957af72e2ea/build/css/bootstrap-datetimepicker.css" rel="stylesheet">
+        <link href="<?php echo base_url("resources/lib/css/bootstrap-datetimepicker.css"); ?>" rel="stylesheet">
 
 
     </head>
@@ -173,7 +173,7 @@
                 <div class="container-fluid">
                     <div class="side-body">
                         <div class="page-title">
-                            <span class="title">Bienvenido - Administrador</span>
+                             <span class="title">Bievenido a <?php echo $establecimiento ?></span>
                             <div class="description">Usuario:<?php echo $nombre ?> / Mi Correo:<?php echo $email ?> </div>
                         </div>
 
@@ -197,7 +197,7 @@
                                                     <ul class="nav nav-tabs" role="tablist">
                                                         <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Datos Generales</a></li>
                                                         <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Privilegios</a></li>
-                                                        
+
                                                     </ul>
                                                     <!-- Tab panes -->
                                                     <div class="tab-content">
@@ -233,7 +233,7 @@
                                                                     <div class="form-group">
                                                                         <label for="fec_nac">Fecha Nacimiento</label>
                                                                         <div class='input-group date' id='datetimepicker1'>
-                                                                            <input type='text' class="form-control" />
+                                                                            <input type='text' class="form-control" name="fec_nac" />
                                                                             <span class="input-group-addon">
                                                                                 <span class="glyphicon glyphicon-calendar"></span>
                                                                             </span>
@@ -245,9 +245,60 @@
 
                                                         </div>
                                                         <div role="tabpanel" class="tab-pane" id="profile">
-                                                            Datos 2
+                                                            <div class="col-xs-12 col-md-6">
+                                                                <div class="form-group">
+                                                                    <label for="username">Nombre Usuario</label>
+                                                                    <input type="text" class="form-control" id="apemat" placeholder="Nombre de Usuario">
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label for="password">Password</label>
+                                                                    <input type="password" class="form-control" id="password" placeholder="Clave de Usuario" value="123456">
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label for=rol">Rol</label>
+                                                                    <select class="form-control" style="width: 100%">
+                                                                        <option>1</option>
+                                                                        <option>2</option>
+                                                                        <option>3</option>
+                                                                        <option>4</option>
+                                                                        <option>5</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-xs-12 col-md-6">
+                                                                <div class="form-group">
+                                                                    <label for="estamento">Estamento</label>
+                                                                    <select class="form-control"   style="width: 100%">
+                                                                        <option>1</option>
+                                                                        <option>2</option>
+                                                                        <option>3</option>
+                                                                        <option>4</option>
+                                                                        <option>5</option>
+                                                                    </select>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label for="servicio">Servicio</label>
+                                                                    <select class="form-control" multiple="multiple" id="servicios"  style="width: 100%">
+                                                                        <option>1</option>
+                                                                        <option>2</option>
+                                                                        <option>3</option>
+                                                                        <option>4</option>
+                                                                        <option>5</option>
+                                                                    </select>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label for="establecimiento">Establecimiento</label>
+                                                                    <select class="form-control" multiple="multiple" id="establecimientos"  style="width: 100%">
+                                                                        <option>1</option>
+                                                                        <option>2</option>
+                                                                        <option>3</option>
+                                                                        <option>4</option>
+                                                                        <option>5</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
                                                         </div>
-                                                        
+
                                                     </div>
                                                 </div>
 
@@ -293,19 +344,25 @@
                     <script type="text/javascript" src="<?php echo base_url("resources/lib/js/ace/theme-github.js"); ?>"></script>
                     <script type="text/javascript" src="<?php echo base_url("resources/js/app.js"); ?>"></script>
 
-                    <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.js"></script>
-                    <script src="//cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/e8bddc60e73c1ec2475f827be36e1957af72e2ea/src/js/bootstrap-datetimepicker.js"></script>
+                    <script src="<?php echo base_url("resources/lib/js/moment-with-locales.js"); ?>"></script>
+                    <script src="<?php echo base_url("resources/lib/js/bootstrap-datetimepicker.js"); ?>"></script>
+
 
                     <script type="text/javascript">
-                       $(document).ready(function () {
+                        $(document).ready(function () {
 
                             $('#datetimepicker1').datetimepicker({
-                                format: 'YYYY/MM/DD'  
-                                //OTRO FORMATO 'YYYY-MM-DD HH:mm'
-                                
-                                
+                                format: 'YYYY/MM/DD'
+                                        //OTRO FORMATO 'YYYY-MM-DD HH:mm'
+
+
                             });
-                                           
+                            $("#servicios").select2({
+                                placeholder:"Servicios"
+                            });
+                            $("#establecimientos").select2({
+                                placeholder: "Establecimientos"
+                            });
 
                         });
                     </script>

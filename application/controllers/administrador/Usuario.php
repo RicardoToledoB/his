@@ -22,7 +22,10 @@ class Usuario extends CI_Controller{
         $data['nombre'] = $this->session->userdata('nombre');
         $data['tipo']=$this->session->userdata('tipo');
         $data['email']=$this->session->userdata('email');
-        $data['usuario']=$this->Usuario_model->list_all();
+        $data['establecimiento']=$this->session->userdata('establecimiento');
+        $data['establecimiento_id']=$this->session->userdata('establecimiento_id');
+        $establecimiento_id=$this->session->userdata('establecimiento_id');
+        $data['usuario']=$this->Usuario_model->find_by_id($establecimiento_id);
         $this->load->view('layout/header',$data);
         $this->load->view('administrador/usuario/usuario_index',$data);
         $this->load->view('layout/footer',$data);
@@ -32,6 +35,8 @@ class Usuario extends CI_Controller{
         $data['nombre'] = $this->session->userdata('nombre');
         $data['tipo']=$this->session->userdata('tipo');
         $data['email']=$this->session->userdata('email');
+        $data['establecimiento']=$this->session->userdata('establecimiento');
+        $data['establecimiento_id']=$this->session->userdata('establecimiento_id');
         $this->load->view('administrador/usuario/usuario_new',$data);
     }
     public function editar(){

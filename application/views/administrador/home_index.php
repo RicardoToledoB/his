@@ -171,7 +171,7 @@
             <div class="container-fluid">
                 <div class="side-body">
                     <div class="page-title">
-                        <span class="title">Bievenido - Administrador</span>
+                        <span class="title">Bievenido a <?php echo $establecimiento ?></span>
                         <div class="description">Usuario:<?php echo $nombre ?> / Mi Correo:<?php echo $email ?> </div>
                     </div>
                     

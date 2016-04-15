@@ -21,6 +21,8 @@ class Equipo extends CI_Controller{
         $data['nombre'] = $this->session->userdata('nombre');
         $data['tipo']=$this->session->userdata('tipo');
         $data['email']=$this->session->userdata('email');
+        $data['establecimiento']=$this->session->userdata('establecimiento');
+        $data['establecimiento_id']=$this->session->userdata('establecimiento_id');
         $this->load->view('administrador/equipo/equipo_index',$data);
     }
 }

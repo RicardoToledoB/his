@@ -171,7 +171,7 @@
                 <div class="container-fluid">
                     <div class="side-body">
                         <div class="page-title">
-                            <span class="title">Bienvenido - Administrador</span>
+                            <span class="title">Bievenido a <?php echo $establecimiento ?></span>
                             <div class="description">Usuario:<?php echo $nombre ?> / Mi Correo:<?php echo $email ?> </div>
                         </div>
 
@@ -191,7 +191,7 @@
                                             <div class="panel-body table-responsive">
                                                 <div class="box-tools m-b-15">
                                                     <div class="input-group">
-                                                        <a href="#" class="btn btn-primary">Nuevo</a>
+                                                        <a href="<?php echo (base_url().'index.php/administrador/servicio/nuevo')?>" class="btn btn-primary">Nuevo</a>
                                                         <input type="text" name="table_search" class="form-control  pull-right" style="width: 280px; height: 33px; top: 5px;" placeholder="Buscar..."/>
                                                         <div class="input-group-btn">
                                                             <button class="btn btn-default"><i class="fa fa-search"></i></button>
