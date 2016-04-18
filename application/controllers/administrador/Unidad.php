@@ -53,4 +53,9 @@ class Unidad extends CI_Controller{
         
         
     }
+    public function delete($unidad_id){
+        $this->Unidad_model->delete($unidad_id);
+        redirect(base_url() . 'index.php/administrador/unidad');
+    }
+    
 }

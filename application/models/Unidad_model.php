@@ -16,5 +16,10 @@ class Unidad_model extends CI_Model{
         $this->db->query("insert into Unidades(nombre,estado,servicio_id,creado_por,fecha_creacion,codigo,establecimiento_id) values('".$nombre."','".$estado."','".$servicio_id."','".$creado_por."',now(),'".$codigo."','".$establecimiento_id."')");
         $this->db->close();
     }
+    public function delete($unidad_id){
+        $this->db->query("update Unidades set estado='pasivo' where unidad_id='".$unidad_id."'");
+        $this->db->close();
+    }
+    
 }
 
