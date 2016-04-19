@@ -156,6 +156,7 @@
                                         <span class="icon fa fa-users"></span><span class="title">Cuenta Usuario</span>
                                     </a>
                                 </li>
+                                
 
                                 <li>
                                     <a href=<?php echo (base_url() . 'index.php/administrador/equipo') ?>>
@@ -171,7 +172,7 @@
                 <div class="container-fluid">
                     <div class="side-body">
                         <div class="page-title">
-                           <span class="title">Bievenido a <?php echo $establecimiento ?></span>
+                            <span class="title">Bievenido a <?php echo $establecimiento ?></span>
                             <div class="description">Usuario:<?php echo $nombre ?> / Mi Correo:<?php echo $email ?> </div>
                         </div>
 

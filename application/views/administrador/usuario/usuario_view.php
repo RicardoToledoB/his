@@ -156,7 +156,9 @@
                                         <span class="icon fa fa-users"></span><span class="title">Cuenta Usuario</span>
                                     </a>
                                 </li>
-
+                                <li>
+                                
+                                </li>
                                 <li>
                                     <a href=<?php echo (base_url() . 'index.php/administrador/equipo') ?>>
                                         <span class="icon fa fa-thumbs-o-up"></span><span class="title">Nuestro Equipo</span>

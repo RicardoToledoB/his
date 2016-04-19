@@ -21,6 +21,8 @@
         <link rel="stylesheet" href="<?php echo base_url("resources/css/style.css"); ?>" />
         <link rel="stylesheet" href="<?php echo base_url("resources/css/themes/flat-blue.css"); ?>" />
 
+        <link href="<?php echo base_url("resources/lib/css/bootstrap-datetimepicker.css"); ?>" rel="stylesheet">
+
 
     </head>
 
@@ -36,7 +38,7 @@
                             <ol class="breadcrumb navbar-breadcrumb">
                                 <li>His-Sidra</li>
                                 <li>Administrador</li>
-                                <li class="active">Unidad</li>
+                                <li class="active">Usuario</li>
                             </ol>
                             <button type="button" class="navbar-right-expand-toggle pull-right visible-xs">
                                 <i class="fa fa-th icon"></i>
@@ -112,14 +114,14 @@
                                 </button>
                             </div>
                             <ul class="nav navbar-nav">
-                                <li>
+                                <li >
                                     <a href=<?php echo (base_url() . 'index.php/administrador/home') ?>>
                                         <span class="icon fa fa-tachometer"></span><span class="title">Panel de Control</span>
                                     </a>
                                 </li>
 
 
-                                <li class="active panel panel-default dropdown">
+                                <li class=" panel panel-default dropdown">
                                     <a data-toggle="collapse" href="#dropdown-form">
                                         <span class="icon fa fa-file-text-o"></span><span class="title">Mantenedores</span>
                                     </a>
@@ -151,12 +153,12 @@
                                         </div>
                                     </div>
                                 </li>
-                                <li>
+                                <li class="active">
                                     <a href=<?php echo (base_url() . 'index.php/administrador/usuario') ?>>
                                         <span class="icon fa fa-users"></span><span class="title">Cuenta Usuario</span>
                                     </a>
                                 </li>
-                                
+
 
                                 <li>
                                     <a href=<?php echo (base_url() . 'index.php/administrador/equipo') ?>>
@@ -183,91 +185,197 @@
                                 <div class="card">
                                     <div class="card-header">
                                         <div class="card-title">
-                                            <div class="title">Mantenedor Unidad </div>
+                                            <div class="title"><i class="fa fa-gear"></i> Cuenta de Usuario</div>
                                         </div>
                                     </div>
                                     <div class="card-body">
-                                        <div class="panel panel-default">
-                                            <div class="panel-heading">Nuevo Unidad</div>
-                                            <form method="POST" action="<?php echo (base_url() . 'index.php/administrador/unidad/save') ?>">
-                                                <div class="panel-body ">
+                                        
 
+                                            <div class="panel panel-default">
+                                                <div class="panel-heading">Parametrizacion Usuario</div>
+                                                <div class="panel-body ">
                                                     <div role="tabpanel" >
                                                         <!-- Nav tabs -->
                                                         <ul class="nav nav-tabs" role="tablist">
-                                                            <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Datos Generales</a></li>
+                                                            <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Configurar Establecimientos</a></li>
+                                                            <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Configurar Servicios</a></li>
+
                                                         </ul>
                                                         <!-- Tab panes -->
                                                         <div class="tab-content">
                                                             <div role="tabpanel" class="tab-pane active" id="home">
                                                                 <div class="col-xs-12 col-md-6">
+                                                                    <?php foreach ($usuario as $user) { ?>
+                                                                        <input type="hidden" id="usuario_id" name="usuario_id" value="<?php echo $user->usuario_id ?>">
+                                                                        <div class="form-group">
+                                                                            <label for="usuario">Usuario Seleccionado</label>
+                                                                            <input type="text" class="form-control" disabled="disabled" value="<?php echo $user->nombre . " " . $user->apepat ?>">
 
+                                                                        </div>
 
+                                                                    <?php } ?>
                                                                     <div class="form-group">
-                                                                        <label for="nombre">Nombre Unidad</label>
-                                                                        <input type="text" name="nombre" class="form-control" id="nombre" placeholder="Nombre Servicio">
-                                                                    </div>
-                                                                    <div class="form-group">
-                                                                        <label for="servicio_id">Servicio</label>
-                                                                        <select class="form-control" name="servicio_id" style="width: 100%">
-                                                                            <?php foreach ($servicio as $serv) { ?>
-                                                                                <option value=<?php echo $serv->servicio_id; ?>><?php echo $serv->nombre; ?></option>
+                                                                        <label for="establecimiento_id">Establecimiento</label>
+                                                                        <select class="form-control" name="establecimiento_id" id="establecimiento_id" style="width: 100%">
+                                                                            <?php foreach ($establecimientos as $estab) { ?>
+                                                                                <option value=<?php echo $estab->establecimiento_id; ?>><?php echo $estab->nombre; ?></option>
                                                                             <?php } ?>
                                                                         </select>
+                                                                        <button id="add_establecimiento">add</button>
                                                                     </div>
 
+
+
+
+                                                                </div>
+                                                                <div class="col-xs-12 col-md-6">
+                                                                    <table id="tablaEstablecimiento" class="table table-striped table-hover table-condensed">
+                                                                        <thead>
+                                                                        <th>#</th>
+                                                                        <th>Establecimiento</th>
+                                                                        <th>Accion</th>
+                                                                        </thead>
+
+
+                                                                    </table>
+
+
+
+                                                                </div>
+
+                                                            </div>
+                                                            <div role="tabpanel" class="tab-pane" id="profile">
+                                                                <div class="col-xs-12 col-md-6">
                                                                     <div class="form-group">
-                                                                        <label for="codigo">Codigo Unidad</label>
-                                                                        <input type="text" name="codigo" class="form-control" id="nombre" placeholder="Codigo Servicio">
+                                                                        <label for=rol">Rol</label>
+                                                                        <select class="form-control" name="rol_id" style="width: 100%">
+                                                                            <?php foreach ($rol as $r) { ?>
+                                                                                <option value=<?php echo $r->rol_id; ?>><?php echo $r->tipo ?></option>
+                                                                            <?php } ?>
+
+                                                                        </select>
                                                                     </div>
+                                                                </div>
+                                                                <div class="col-xs-12 col-md-6">
 
 
                                                                 </div>
                                                             </div>
+
                                                         </div>
                                                     </div>
+
+
+
+
+
+
                                                 </div>
                                                 <div class="panel-footer">
                                                     <div class="box-tools m-b-15">
                                                         <div class="input-group">
-                                                            <input type="submit"class="btn btn-primary" value="Guardar">
-                                                            <input type="reset"class="btn btn-danger" value="Limpiar">
+                                                           <!-- <input type="submit"class="btn btn-primary" value="Agregar">-->
+
 
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </form>
-                                        </div>
+                                            </div>
+                                     
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <footer class="app-footer">
-                <div class="wrapper">
-                    <span class="pull-right">1.0 <a href="#"><i class="fa fa-long-arrow-up"></i></a></span> Proyecto Sidra © 2016 Copyright.
-                </div>
-            </footer>
-            <div>
-                <!-- Javascript Libs -->
-                <script type="text/javascript" src="<?php echo base_url("resources/lib/js/jquery.min.js"); ?>"></script>
-                <script type="text/javascript" src="<?php echo base_url("resources/lib/js/bootstrap.min.js"); ?>"></script>
-                <script type="text/javascript" src="<?php echo base_url("resources/lib/js/Chart.min.js"); ?>"></script>
-                <script type="text/javascript" src="<?php echo base_url("resources/lib/js/bootstrap-switch.min.js"); ?>"></script>
-                <script type="text/javascript" src="<?php echo base_url("resources/lib/js/jquery.matchHeight-min.js"); ?>"></script>
-                <script type="text/javascript" src="<?php echo base_url("resources/lib/js/jquery.dataTables.min.js"); ?>"></script>
-                <script type="text/javascript" src="<?php echo base_url("resources/lib/js/dataTables.bootstrap.min.js"); ?>"></script>
-                <script type="text/javascript" src="<?php echo base_url("resources/lib/js/select2.full.min.js"); ?>"></script>
-                <script type="text/javascript" src="<?php echo base_url("resources/lib/js/ace/ace.js"); ?>"></script>
-                <script type="text/javascript" src="<?php echo base_url("resources/lib/js/ace/mode-html.js"); ?>"></script>
-                <script type="text/javascript" src="<?php echo base_url("resources/lib/js/ace/theme-github.js"); ?>"></script>
-                <script type="text/javascript" src="<?php echo base_url("resources/js/app.js"); ?>"></script>
+                <footer class="app-footer">
+                    <div class="wrapper">
+                        <span class="pull-right">1.0 <a href="#"><i class="fa fa-long-arrow-up"></i></a></span> Proyecto Sidra © 2016 Copyright.
+                    </div>
+                </footer>
+                <div>
+                    <!-- Javascript Libs -->
+                    <script type="text/javascript" src="<?php echo base_url("resources/lib/js/jquery.min.js"); ?>"></script>
+                    <script type="text/javascript" src="<?php echo base_url("resources/lib/js/bootstrap.min.js"); ?>"></script>
+                    <script type="text/javascript" src="<?php echo base_url("resources/lib/js/Chart.min.js"); ?>"></script>
+                    <script type="text/javascript" src="<?php echo base_url("resources/lib/js/bootstrap-switch.min.js"); ?>"></script>
+                    <script type="text/javascript" src="<?php echo base_url("resources/lib/js/jquery.matchHeight-min.js"); ?>"></script>
+                    <script type="text/javascript" src="<?php echo base_url("resources/lib/js/jquery.dataTables.min.js"); ?>"></script>
+                    <script type="text/javascript" src="<?php echo base_url("resources/lib/js/dataTables.bootstrap.min.js"); ?>"></script>
+                    <script type="text/javascript" src="<?php echo base_url("resources/lib/js/select2.full.min.js"); ?>"></script>
+                    <script type="text/javascript" src="<?php echo base_url("resources/lib/js/ace/ace.js"); ?>"></script>
+                    <script type="text/javascript" src="<?php echo base_url("resources/lib/js/ace/mode-html.js"); ?>"></script>
+                    <script type="text/javascript" src="<?php echo base_url("resources/lib/js/ace/theme-github.js"); ?>"></script>
+                    <script type="text/javascript" src="<?php echo base_url("resources/js/app.js"); ?>"></script>
+
+                    <script src="<?php echo base_url("resources/lib/js/moment-with-locales.js"); ?>"></script>
+                    <script src="<?php echo base_url("resources/lib/js/bootstrap-datetimepicker.js"); ?>"></script>
+
+
+                    <script type="text/javascript">
+                        $(document).ready(function () {
+                            $("#add_establecimiento").click(function () {
+                                establecimiento_id = $("#establecimiento_id").val();
+                                usuario_id = $("#usuario_id").val();
+                                //alert("Establecimiento:" + establecimiento_id);
+
+                                $.ajax("http://192.168.1.33:8888/his/index.php/administrador/usuario/save_ue?usuario_id="+usuario_id+"&establecimiento_id="+establecimiento_id, {
+                                    type: "post",
+                                    dataType: 'json',
+                                    contentType: 'application/json',
+                                    mimeType: 'application/json',
+                                    success: function (result) {
+                                        cargar_establecimientos();
+                                        alert(result);
+                                       /* $("#mensaje").html("" + result);
+                                        if ($("#mensaje").val() != null) {
+                                            setTimeout(function () {
+                                                $("#mensaje").html("");
+                                            }, 5000);
+                                        }*/
+                                    },
+                                    error: function (result) {
+                                        console.error("Errores:", result);
+                                    }
+                                });
+
+
+                            });
+                            cargar_establecimientos();
+
+                            function cargar_establecimientos() {
+                                $valor = $("#usuario_id").val();
+                                $.ajax('http://192.168.1.33:8888/his/index.php/administrador/usuario/enviar_establecimientos?id=' + $valor, {
+                                    type: "post",
+                                    dataType: 'json',
+                                    contentType: 'application/json',
+                                    mimeType: 'application/json',
+                                    success: function (result) {
+                                        //console.log("El valor enviado es:", result);
+                                        $("#tablaEstablecimiento").empty();
+                                        $("#tablaEstablecimiento").append("<thead><th>#</th><th>Establecimiento</th><th>Accion</th></thead><tbody>");
+                                        $.each(result, function (index, value) {
+                                            //console.log(value.establecimiento_id);
+                                            //console.log(value.nombre);
+                                            $("#tablaEstablecimiento").append("<tr>\n\
+                                                                                <td>" + value.establecimiento_id + "</td>\n\
+                                                                                <td>" + value.nombre + "</td>\n\
+                                                                                <td>" + "<button>eliminar</button>" + "</td>\n\            \n\
+                                                                                </tr>");
+                                        });
+                                        $("#tablaEstablecimiento").append("</tbody>");
+
+                                    },
+                                    error: function (result) {
+                                        console.error("Errores:", result);
+                                    }
+                                });
+                            }
 
 
 
+                        });
+                    </script>
+                    </body>
 
-                </body>
-
-                </html>
+                    </html>

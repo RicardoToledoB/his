@@ -158,6 +158,7 @@
                                         <span class="icon fa fa-users"></span><span class="title">Cuenta Usuario</span>
                                     </a>
                                 </li>
+                                
 
                                 <li>
                                     <a href=<?php echo (base_url() . 'index.php/administrador/equipo') ?>>
@@ -173,7 +174,7 @@
                 <div class="container-fluid">
                     <div class="side-body">
                         <div class="page-title">
-                             <span class="title">Bievenido a <?php echo $establecimiento ?></span>
+                            <span class="title">Bievenido a <?php echo $establecimiento ?></span>
                             <div class="description">Usuario:<?php echo $nombre ?> / Mi Correo:<?php echo $email ?> </div>
                         </div>
 
@@ -188,47 +189,48 @@
                                         </div>
                                     </div>
                                     <div class="card-body">
-                                        <div class="panel panel-default">
-                                            <div class="panel-heading">Nuevo Usuario</div>
-                                            <div class="panel-body ">
+                                        <form method="post" action=<?php echo (base_url() . 'index.php/administrador/usuario/save') ?>>
 
-                                                <div role="tabpanel" >
-                                                    <!-- Nav tabs -->
-                                                    <ul class="nav nav-tabs" role="tablist">
-                                                        <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Datos Generales</a></li>
-                                                        <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Privilegios</a></li>
+                                            <div class="panel panel-default">
+                                                <div class="panel-heading">Nuevo Usuario</div>
+                                                <div class="panel-body ">
+                                                    <div role="tabpanel" >
+                                                        <!-- Nav tabs -->
+                                                        <ul class="nav nav-tabs" role="tablist">
+                                                            <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Datos Generales</a></li>
+                                                            <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Privilegios</a></li>
 
-                                                    </ul>
-                                                    <!-- Tab panes -->
-                                                    <div class="tab-content">
-                                                        <div role="tabpanel" class="tab-pane active" id="home">
-                                                            <div class="col-xs-12 col-md-6">
-                                                                <form>
+                                                        </ul>
+                                                        <!-- Tab panes -->
+                                                        <div class="tab-content">
+                                                            <div role="tabpanel" class="tab-pane active" id="home">
+                                                                <div class="col-xs-12 col-md-6">
+
                                                                     <div class="form-group">
                                                                         <label for="rut">Rut</label>
-                                                                        <input type="text" class="form-control" id="rut" placeholder="Rut">
+                                                                        <input type="text" class="form-control" name="ruttot" id="rut" placeholder="Rut">
                                                                     </div>
                                                                     <div class="form-group">
                                                                         <label for="nombre">Nombre</label>
-                                                                        <input type="text" class="form-control" id="nombre" placeholder="nombre">
+                                                                        <input type="text" class="form-control" name="nombre" id="nombre" placeholder="nombre">
                                                                     </div>
                                                                     <div class="form-group">
                                                                         <label for="apepat">1er Apellido</label>
-                                                                        <input type="text" class="form-control" id="apepat" placeholder="Apellido Paterno">
+                                                                        <input type="text" class="form-control" name="apepat" id="apepat" placeholder="Apellido Paterno">
                                                                     </div>
 
 
-                                                                </form>
-                                                            </div>
-                                                            <div class="col-xs-12 col-md-6">
-                                                                <form>
+
+                                                                </div>
+                                                                <div class="col-xs-12 col-md-6">
+
                                                                     <div class="form-group">
                                                                         <label for="apemat">2do Apellido</label>
-                                                                        <input type="text" class="form-control" id="apemat" placeholder="Apellido Materno">
+                                                                        <input type="text" class="form-control" name="apemat" id="apemat" placeholder="Apellido Materno">
                                                                     </div>
                                                                     <div class="form-group">
                                                                         <label for="email">Correo Electronico</label>
-                                                                        <input type="email" class="form-control" id="email" placeholder="Correo Electronico" >
+                                                                        <input type="email" class="form-control" name="email" id="email" placeholder="Correo Electronico" >
                                                                     </div>
                                                                     <div class="form-group">
                                                                         <label for="fec_nac">Fecha Nacimiento</label>
@@ -240,84 +242,71 @@
                                                                         </div>
                                                                     </div>
 
-                                                                </form>
+
+                                                                </div>
+
+                                                            </div>
+                                                            <div role="tabpanel" class="tab-pane" id="profile">
+                                                                <div class="col-xs-12 col-md-6">
+                                                                    <div class="form-group">
+                                                                        <label for="username">Nombre Usuario</label>
+                                                                        <input type="text" name="username" class="form-control" id="apemat" placeholder="Nombre de Usuario">
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label for="password">Password</label>
+                                                                        <input type="password" name="password" class="form-control" id="password" placeholder="Clave de Usuario" value="123456">
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label for=rol">Rol</label>
+                                                                        <select class="form-control" name="rol_id" style="width: 100%">
+                                                                            <?php foreach ($rol as $r) { ?>
+                                                                                <option value=<?php echo $r->rol_id; ?>><?php echo $r->tipo ?></option>
+                                                                            <?php } ?>
+
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-xs-12 col-md-6">
+                                                                    <div class="form-group">
+                                                                        <label for="estamento">Estamento</label>
+                                                                        <select class="form-control" name="estamento_id"   style="width: 100%">
+                                                                            <?php foreach ($estamento as $esta) { ?>
+                                                                                <option value=<?php echo $esta->estamento_id ?> ><?php echo $esta->nombre ?></option>
+                                                                            <?php } ?>
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label for="servicio">Servicio</label>
+                                                                        <select class="form-control" multiple="multiple" name="servicio_id" id="servicios"  style="width: 100%">
+                                                                            <?php foreach ($servicio as $serv) { ?>
+                                                                                <option value=<?php $serv->servicio_id ?>><?php echo $serv->nombre ?></option>
+                                                                            <?php } ?>
+                                                                        </select>
+                                                                    </div>
+
+                                                                </div>
                                                             </div>
 
                                                         </div>
-                                                        <div role="tabpanel" class="tab-pane" id="profile">
-                                                            <div class="col-xs-12 col-md-6">
-                                                                <div class="form-group">
-                                                                    <label for="username">Nombre Usuario</label>
-                                                                    <input type="text" class="form-control" id="apemat" placeholder="Nombre de Usuario">
-                                                                </div>
-                                                                <div class="form-group">
-                                                                    <label for="password">Password</label>
-                                                                    <input type="password" class="form-control" id="password" placeholder="Clave de Usuario" value="123456">
-                                                                </div>
-                                                                <div class="form-group">
-                                                                    <label for=rol">Rol</label>
-                                                                    <select class="form-control" style="width: 100%">
-                                                                        <option>1</option>
-                                                                        <option>2</option>
-                                                                        <option>3</option>
-                                                                        <option>4</option>
-                                                                        <option>5</option>
-                                                                    </select>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-xs-12 col-md-6">
-                                                                <div class="form-group">
-                                                                    <label for="estamento">Estamento</label>
-                                                                    <select class="form-control"   style="width: 100%">
-                                                                        <option>1</option>
-                                                                        <option>2</option>
-                                                                        <option>3</option>
-                                                                        <option>4</option>
-                                                                        <option>5</option>
-                                                                    </select>
-                                                                </div>
-                                                                <div class="form-group">
-                                                                    <label for="servicio">Servicio</label>
-                                                                    <select class="form-control" multiple="multiple" id="servicios"  style="width: 100%">
-                                                                        <option>1</option>
-                                                                        <option>2</option>
-                                                                        <option>3</option>
-                                                                        <option>4</option>
-                                                                        <option>5</option>
-                                                                    </select>
-                                                                </div>
-                                                                <div class="form-group">
-                                                                    <label for="establecimiento">Establecimiento</label>
-                                                                    <select class="form-control" multiple="multiple" id="establecimientos"  style="width: 100%">
-                                                                        <option>1</option>
-                                                                        <option>2</option>
-                                                                        <option>3</option>
-                                                                        <option>4</option>
-                                                                        <option>5</option>
-                                                                    </select>
-                                                                </div>
-                                                            </div>
+                                                    </div>
+
+
+
+
+
+
+                                                </div>
+                                                <div class="panel-footer">
+                                                    <div class="box-tools m-b-15">
+                                                        <div class="input-group">
+                                                            <input type="submit"class="btn btn-primary" value="Guardar">
+                                                            <input type="reset"class="btn btn-danger" value="Limpiar">
+
                                                         </div>
-
-                                                    </div>
-                                                </div>
-
-
-
-
-
-
-                                            </div>
-                                            <div class="panel-footer">
-                                                <div class="box-tools m-b-15">
-                                                    <div class="input-group">
-                                                        <input type="submit"class="btn btn-primary" value="Guardar">
-                                                        <input type="reset"class="btn btn-danger" value="Limpiar">
-
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
@@ -358,7 +347,7 @@
 
                             });
                             $("#servicios").select2({
-                                placeholder:"Servicios"
+                                placeholder: "Servicios"
                             });
                             $("#establecimientos").select2({
                                 placeholder: "Establecimientos"

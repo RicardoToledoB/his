@@ -156,6 +156,7 @@
                                         <span class="icon fa fa-users"></span><span class="title">Cuenta Usuario</span>
                                     </a>
                                 </li>
+                               
 
                                 <li>
                                     <a href=<?php echo (base_url() . 'index.php/administrador/equipo') ?>>
@@ -237,6 +238,7 @@
                                             </div>
 
                                         </div>
+                                        <!-- MODAL ELIMINAR -->
                                         <div class="modal fade" id="modalDelete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                             <div class="modal-dialog">
                                                 <div class="modal-content">

@@ -156,6 +156,7 @@
                                         <span class="icon fa fa-users"></span><span class="title">Cuenta Usuario</span>
                                     </a>
                                 </li>
+                               
 
                                 <li>
                                     <a href=<?php echo (base_url() . 'index.php/administrador/equipo') ?>>
@@ -188,7 +189,7 @@
                                     <div class="card-body">
                                         <div class="panel panel-default">
                                             <div class="panel-heading">Nuevo Servicio</div>
-                                            <form method="POST" action="<?php echo (base_url().'index.php/administrador/servicio/save')?>">
+                                            <form method="POST" action="<?php echo (base_url() . 'index.php/administrador/servicio/save') ?>">
                                                 <div class="panel-body ">
 
                                                     <div role="tabpanel" >

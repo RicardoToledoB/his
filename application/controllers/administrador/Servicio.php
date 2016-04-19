@@ -1,6 +1,7 @@
 <?php
 
 class Servicio extends CI_Controller{
+    
     public function __construct() {
         parent::__construct();
         $this->load->model('Servicio_model');
@@ -15,8 +16,8 @@ class Servicio extends CI_Controller{
         } else {
             redirect(base_url() . 'index.php/login');
         }
-        
     }
+    
     public function index(){
         $data['id'] = $this->session->userdata('id');
         $data['nombre'] = $this->session->userdata('nombre');
@@ -47,6 +48,11 @@ class Servicio extends CI_Controller{
         $codigo=$this->input->post('codigo');
         $establecimiento_id=$this->session->userdata('establecimiento_id');
         $this->Servicio_model->save($nombre,$estado,$creado_por,$codigo,$establecimiento_id);
+        redirect(base_url() . 'index.php/administrador/servicio');
+    }
+    
+    public function delete($servicio_id){
+        $this->Servicio_model->delete($servicio_id);
         redirect(base_url() . 'index.php/administrador/servicio');
     }
     

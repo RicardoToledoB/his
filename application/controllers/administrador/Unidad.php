@@ -1,6 +1,7 @@
 <?php
 
 class Unidad extends CI_Controller{
+    
     public function __construct() {
         parent::__construct();
         $this->load->model('Unidad_model');
@@ -17,6 +18,7 @@ class Unidad extends CI_Controller{
             redirect(base_url() . 'index.php/login');
         }
     }
+    
     public function index(){
        $data['id'] = $this->session->userdata('id');
         $data['nombre'] = $this->session->userdata('nombre');
@@ -41,6 +43,7 @@ class Unidad extends CI_Controller{
         $data['servicio']=$this->Servicio_model->list_all($establecimiento_id);
         $this->load->view('administrador/unidad/unidad_new',$data);
     }
+    
     public function save(){
         $nombre=$this->input->post('nombre');
         $estado='activo';
@@ -53,6 +56,7 @@ class Unidad extends CI_Controller{
         
         
     }
+    
     public function delete($unidad_id){
         $this->Unidad_model->delete($unidad_id);
         redirect(base_url() . 'index.php/administrador/unidad');

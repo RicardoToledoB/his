@@ -156,6 +156,7 @@
                                         <span class="icon fa fa-users"></span><span class="title">Cuenta Usuario</span>
                                     </a>
                                 </li>
+                               
 
                                 <li>
                                     <a href=<?php echo (base_url() . 'index.php/administrador/equipo') ?>>
@@ -191,7 +192,7 @@
                                             <div class="panel-body table-responsive">
                                                 <div class="box-tools m-b-15">
                                                     <div class="input-group">
-                                                        <a href="<?php echo (base_url().'index.php/administrador/servicio/nuevo')?>" class="btn btn-primary">Nuevo</a>
+                                                        <a href="<?php echo (base_url() . 'index.php/administrador/servicio/nuevo') ?>" class="btn btn-primary">Nuevo</a>
                                                         <input type="text" name="table_search" class="form-control  pull-right" style="width: 280px; height: 33px; top: 5px;" placeholder="Buscar..."/>
                                                         <div class="input-group-btn">
                                                             <button class="btn btn-default"><i class="fa fa-search"></i></button>
@@ -205,7 +206,6 @@
                                                             <th>#</th>
                                                             <th>Nombre</th>
                                                             <th>Codigo</th>
-                                                            
                                                             <th>Acciones</th>
                                                         </tr>
                                                     </thead>
@@ -215,12 +215,12 @@
                                                                 <th scope="row"><?php echo $serv->servicio_id ?></th>
                                                                 <td><?php echo $serv->nombre ?></td>
                                                                 <td><?php echo $serv->codigo ?></td>
-                                                               
+
                                                                 <td>
                                                                     <div class="btn-group" role="group" aria-label="Default button group">
                                                                         <button type="button" class="btn btn-primary btn-xs"><i class="fa fa-search"></i></button>
                                                                         <button type="button" class="btn btn-info btn-xs"><i class="fa fa-edit"></i></button>
-                                                                        <button type="button" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button>
+                                                                        <button type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-href="<?php echo (base_url() . 'index.php/administrador/servicio/delete/' . $serv->servicio_id) ?>" data-target="#modalDelete"><i class="fa fa-trash"></i></button>
                                                                     </div>
                                                                 </td>
                                                             </tr>
@@ -234,6 +234,26 @@
                                             </div>
 
                                         </div>
+                                        <!-- MODAL ELIMINAR -->
+                                        <div class="modal fade" id="modalDelete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                        <h4 class="modal-title" id="myModalLabel">Eliminar</h4>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        ¿Esta seguro de eliminar?
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                                                        <button type="button" id='eliminame' class="btn btn-primary">Eliminar</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
                                     </div>
                                 </div>
                             </div>
@@ -260,7 +280,18 @@
                 <script type="text/javascript" src="<?php echo base_url("resources/lib/js/ace/mode-html.js"); ?>"></script>
                 <script type="text/javascript" src="<?php echo base_url("resources/lib/js/ace/theme-github.js"); ?>"></script>
                 <script type="text/javascript" src="<?php echo base_url("resources/js/app.js"); ?>"></script>
+                <script>
+                    $(document).ready(function () {
+                        $('#modalDelete').on('show.bs.modal', function (e) {
+                            $('#eliminame').click(function () {
+                                $(location).attr('href', $(e.relatedTarget).data('href'));
+                            });
+                        });
 
+                    });
+
+
+                </script>
 
 
 

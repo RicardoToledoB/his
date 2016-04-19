@@ -19,6 +19,12 @@ class Servicio_model extends CI_Model{
         
     }
     
+    public function delete($servicio_id){
+        $this->db->query("update Servicios set estado='pasivo' where servicio_id='".$servicio_id."'");
+        $this->db->close();
+    }
+    
+    
     public function cuenta(){
         $query=$this->db->query("select count(*) as cuenta from Servicios where estado='activo'");
         $result=$query->result_object();
