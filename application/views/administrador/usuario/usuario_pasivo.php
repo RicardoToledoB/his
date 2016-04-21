@@ -185,12 +185,10 @@
                                     </div>
                                     <div class="card-body">
                                         <div class="panel panel-default">
-                                            <div class="panel-heading">Listado Usuarios</div>
+                                            <div class="panel-heading">Listado Usuarios Pasivos</div>
                                             <div class="panel-body table-responsive">
                                                 <div class="box-tools m-b-15">
                                                     <div class="input-group">
-                                                        <a href="<?php echo (base_url() . 'index.php/administrador/usuario/nuevo') ?>" class="btn btn-primary">Nuevo</a>
-                                                        <a href="<?php echo (base_url() . 'index.php/administrador/usuario/pasivo') ?>" class="btn btn-danger"><i class="fa fa-trash"></i> Pasivos</a>
                                                         <input type="text" name="table_search" class="form-control  pull-right" style="width: 280px; height: 33px; top: 5px;" placeholder="Buscar..."/>
                                                         <div class="input-group-btn">
                                                             <button class="btn btn-default"><i class="fa fa-search"></i></button>
@@ -219,11 +217,8 @@
                                                                 <td><?php echo $user->username ?></td>
                                                                 <td>
                                                                     <div class="btn-group" role="group" aria-label="Default button group">
-                                                                        <button type="button" class="btn btn-primary btn-xs"><i class="fa fa-search"></i></button>
-                                                                        <button type="button" class="btn btn-info btn-xs"><i class="fa fa-edit"></i></button>
-                                                                        <button type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-href="<?php echo (base_url() . 'index.php/administrador/usuario/delete/' . $user->usuario_id) ?>" data-target="#modalDelete"><i class="fa fa-trash"></i></button>
-                                                                        <a href="<?php echo (base_url() . 'index.php/administrador/usuario/parametrizar/' . $user->usuario_id) ?>"><button type="button" class="btn btn-success btn-xs"><i class="fa fa-gear"></i></button></a>
-                                                                  
+                                                                        <button type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-href="<?php echo (base_url() . 'index.php/administrador/usuario/activate/' . $user->usuario_id) ?>" data-target="#modalDelete"><i class="fa fa-trash"></i></button>
+                                                                       
                                                                     </div>
                                                                 </td>
                                                             </tr>
@@ -242,14 +237,14 @@
                                                 <div class="modal-content">
                                                     <div class="modal-header">
                                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                                        <h4 class="modal-title" id="myModalLabel">Eliminar</h4>
+                                                        <h4 class="modal-title" id="myModalLabel">Activar Usuario</h4>
                                                     </div>
                                                     <div class="modal-body">
-                                                        ¿Esta seguro de eliminar?
+                                                        ¿Esta seguro de activar esta cuenta?
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                                                        <button type="button" id='eliminame' class="btn btn-primary">Eliminar</button>
+                                                        <button type="button" id='eliminame' class="btn btn-primary">Activar Usuario</button>
                                                     </div>
                                                 </div>
                                             </div>

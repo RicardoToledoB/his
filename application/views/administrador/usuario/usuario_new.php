@@ -158,7 +158,7 @@
                                         <span class="icon fa fa-users"></span><span class="title">Cuenta Usuario</span>
                                     </a>
                                 </li>
-                                
+
 
                                 <li>
                                     <a href=<?php echo (base_url() . 'index.php/administrador/equipo') ?>>
@@ -276,13 +276,18 @@
                                                                         </select>
                                                                     </div>
                                                                     <div class="form-group">
-                                                                        <label for="servicio">Servicio</label>
-                                                                        <select class="form-control" multiple="multiple" name="servicio_id" id="servicios"  style="width: 100%">
-                                                                            <?php foreach ($servicio as $serv) { ?>
-                                                                                <option value=<?php $serv->servicio_id ?>><?php echo $serv->nombre ?></option>
-                                                                            <?php } ?>
-                                                                        </select>
+                                                                        <label for="agenda">Con Agenda</label>
+                                                                        
+                                                                        <div class="checkbox3 checkbox-round">
+                                                                            <input type="checkbox" name="agenda" id="checkbox-1">
+                                                                            <label for="checkbox-1">
+                                                                                Se creara agenda?
+                                                                            </label>
+                                                                        </div>
+
+
                                                                     </div>
+
 
                                                                 </div>
                                                             </div>

@@ -25,7 +25,8 @@ enabled int(10),
 creado_por int(10),
 fecha_creacion datetime,
 estamento_id int(10),
-email varchar(25));
+email varchar(25),
+agenda int(10));
 
 drop table Usuarios_Establecimientos;
 create table Usuarios_Establecimientos(
@@ -318,28 +319,31 @@ centro_salud_id int(10));
 insert into Roles(estado,creado_por,fecha_creacion,tipo) values('activo',1,'2016/03/31 13:00:01','administrador');
 insert into Roles(estado,creado_por,fecha_creacion,tipo) values('activo',2,'2016/04/11 12:59:43','administrativo');
 
-insert into Usuarios(rut,dv,nombre,apepat,apemat,fec_nac,username,password,enabled,creado_por,fecha_creacion,estamento_id,email,rol_id) values('15582517','0','Ricardo','Toledo','Barria','1984/07/31','rtoledo','1234',1,1,'2015/01/01 12:00:01',1,'rtoledo@gmail.com',1);
-insert into Usuarios(rut,dv,nombre,apepat,apemat,fec_nac,username,password,enabled,creado_por,fecha_creacion,estamento_id,email,rol_id) values('15905884','0','Iván Alonso','Andrade','Cabrera','1985/03/02','iandrade','1234',1,2,'2016/04/11 13:13:02',1,'ivanandrade@gmail.com',1);
-insert into Usuarios(rut,dv,nombre,apepat,apemat,fec_nac,username,password,enabled,creado_por,fecha_creacion,estamento_id,email,rol_id) values('10063397','3','Juan','Pérez','Gómez','1990/10/02','jperez','1234',1,2,'2016/04/11 15:00:00',3,'juanperez@gmail.com',2);
-insert into Usuarios(rut,dv,nombre,apepat,apemat,fec_nac,username,password,enabled,creado_por,fecha_creacion,estamento_id,email,rol_id) values('89565247','3','Jimena','Muñoz','Cárdenas','1950/12/09','jmuñoz','1234',1,2,'2016/04/11 17:30:01',4,'jmuñoz@gmail.com',2);
-insert into Usuarios(rut,dv,nombre,apepat,apemat,fec_nac,username,password,enabled,creado_por,fecha_creacion,estamento_id,email,rol_id) values('21849349','1','Carlos','Cáceres','Pinto','1988/05/22','ccaceres','1234',1,2,'2016/04/11 16:02:00',5,'ccaceresp@gmail.com',2);
+insert into Usuarios(rut,dv,nombre,apepat,apemat,fec_nac,username,password,enabled,creado_por,fecha_creacion,estamento_id,email,rol_id,agenda) values('15582517','0','Ricardo','Toledo','Barria','1984/07/31','rtoledo','1234',1,1,'2015/01/01 12:00:01',10,'rtoledo@gmail.com',1,1);
+insert into Usuarios(rut,dv,nombre,apepat,apemat,fec_nac,username,password,enabled,creado_por,fecha_creacion,estamento_id,email,rol_id,agenda) values('15905884','0','Iván Alonso','Andrade','Cabrera','1985/03/02','iandrade','1234',1,2,'2016/04/11 13:13:02',10,'ivanandrade@gmail.com',1,1);
+
 
 insert into Establecimientos(nombre,codigo,estado) values('Hospital Clinico Magallanes','H01','activo');
 insert into Establecimientos(nombre,codigo,estado) values('Hospital Augusto Essmann','H02','activo');
 insert into Establecimientos(nombre,codigo,estado) values('Hospital Marco Chamorro','H03','activo');
 insert into Establecimientos(nombre,codigo,estado) values('Hospital Puerto Williams','H04','activo');
 
-insert into Estamentos(nombre,codigo,estado) values('superusuario','01','activo');
-insert into Estamentos(nombre,codigo,estado) values('medico','02','activo');
-insert into Estamentos(nombre,codigo,estado) values('administrativo','03','activo');
+insert into Estamentos(nombre,codigo,estado) values('Medico','1','activo');
+insert into Estamentos(nombre,codigo,estado) values('Enfermera','2','activo');
+insert into Estamentos(nombre,codigo,estado) values('Matrona','3','activo');
+insert into Estamentos(nombre,codigo,estado) values('Tecnico Paramedico','4','activo');
+insert into Estamentos(nombre,codigo,estado) values('Odontologo','5','activo');
+insert into Estamentos(nombre,codigo,estado) values('Nutricionista','6','activo');
+insert into Estamentos(nombre,codigo,estado) values('Kinesiologo','7','activo');
+insert into Estamentos(nombre,codigo,estado) values('Terapeuta Ocupacional','8','activo');
+insert into Estamentos(nombre,codigo,estado) values('Psicologo','9','activo');
+insert into Estamentos(nombre,codigo,estado) values('Otros','0','activo');
 
 
 
 insert into Usuarios_Establecimientos(usuario_id,establecimiento_id) values(1,2);
 insert into Usuarios_Establecimientos(usuario_id,establecimiento_id) values(2,1);
-insert into Usuarios_Establecimientos(usuario_id,establecimiento_id) values(3,2);
-insert into Usuarios_Establecimientos(usuario_id,establecimiento_id) values(4,3);
-insert into Usuarios_Establecimientos(usuario_id,establecimiento_id) values(5,4);
+
 
 insert into Logs(fecha_ingreso,usuario_id,establecimiento_id) values('2016/01/31 08:00:01',1,1);
 insert into Logs(fecha_ingreso,usuario_id,establecimiento_id) values('2016/01/29 09:15:00',2,1);
@@ -361,9 +365,7 @@ insert into Unidades(nombre,estado,servicio_id,creado_por,fecha_creacion,codigo,
 
 insert into Usuarios_Servicios(usuario_id,servicio_id) values(1,1);
 insert into Usuarios_Servicios(usuario_id,servicio_id) values(2,1);
-insert into Usuarios_Servicios(usuario_id,servicio_id) values(3,2);
-insert into Usuarios_Servicios(usuario_id,servicio_id) values(4,3);
-insert into Usuarios_Servicios(usuario_id,servicio_id) values(5,4);
+
 
 
 

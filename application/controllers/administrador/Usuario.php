@@ -37,6 +37,21 @@ class Usuario extends CI_Controller {
         $this->load->view('administrador/usuario/usuario_index', $data);
         //$this->load->view('layout/footer',$data);
     }
+    
+    public function pasivo(){
+        $data['id'] = $this->session->userdata('id');
+        $data['nombre'] = $this->session->userdata('nombre');
+        $data['tipo'] = $this->session->userdata('tipo');
+        $data['email'] = $this->session->userdata('email');
+        $data['establecimiento'] = $this->session->userdata('establecimiento');
+        $data['establecimiento_id'] = $this->session->userdata('establecimiento_id');
+        $data['usuario'] = $this->Usuario_model->list_pasivo();
+
+        //$this->load->view('layout/header',$data);
+        $this->load->view('administrador/usuario/usuario_pasivo', $data);
+        //$this->load->view('layout/footer',$data);
+        
+    }
 
     public function nuevo() {
         $data['id'] = $this->session->userdata('id');
@@ -70,7 +85,13 @@ class Usuario extends CI_Controller {
         $email=$this->input->post('email');
         $rol_id=$this->input->post('rol_id');
         
-        $this->Usuario_model->save($rut,$dv,$nombre,$apepat,$apemat,$fec_nac,$estamento_id,$username,$password,$enabled,$creado_por,$email,$rol_id);
+        if($this->input->post('agenda')!='on'){
+            $agenda=0;
+        }else{
+            $agenda=1;
+        }
+       
+        $this->Usuario_model->save($rut,$dv,$nombre,$apepat,$apemat,$fec_nac,$estamento_id,$username,$password,$enabled,$creado_por,$email,$rol_id,$agenda);
         redirect(base_url() . 'index.php/administrador/usuario');
         
     }
@@ -79,6 +100,11 @@ class Usuario extends CI_Controller {
     public function delete($usuario_id) {
         $this->Usuario_model->delete($usuario_id);
         redirect(base_url() . 'index.php/administrador/usuario');
+    }
+    
+    public function activate($usuario_id){
+        $this->Usuario_model->activate($usuario_id);
+        redirect(base_url() . 'index.php/administrador/usuario/pasivo');
     }
 
     public function parametrizar($usuario_id){
@@ -95,19 +121,60 @@ class Usuario extends CI_Controller {
         $this->load->view('administrador/usuario/usuario_conf',$data);
         
     }
+    
+    
+    
     public function enviar_establecimientos(){
         $usuario_id=$this->input->get('id');
-        $data=$this->Usuario_Establecimiento_model->list_by_id($usuario_id);
+        $data=$this->Usuario_Establecimiento_model->list_esta_by_id($usuario_id);
+        echo json_encode($data);
+    }
+    public function enviar_servicios(){
+        $establecimiento_id=$this->input->get('id');
+        $data=$this->Usuario_Establecimiento_model->list_serv_by_id($establecimiento_id);
+        echo json_encode($data);
+        
+    }
+    
+    public function carga_servicios(){
+        $usuario_id=$this->input->get('id');
+        $data=$this->Usuario_Establecimiento_model->carga_serv_by_id($usuario_id);
         echo json_encode($data);
     }
     
     public function save_ue(){
         $usuario_id=$this->input->get('usuario_id');
         $establecimiento_id=$this->input->get('establecimiento_id');
-        $this->Usuario_Establecimiento_model->save($usuario_id,$establecimiento_id);
+        $this->Usuario_Establecimiento_model->save_ue($usuario_id,$establecimiento_id);
         $data="ok".$usuario_id . $establecimiento_id;
         echo json_encode($data);
     }
+    
+    public function delete_ue(){
+        $usuario_id=$this->input->get('usuario_id');
+        $establecimiento_id=$this->input->get('establecimiento_id');
+        $this->Usuario_Establecimiento_model->delete_ue($usuario_id,$establecimiento_id);
+        $data="ok".$usuario_id . $establecimiento_id;
+        echo json_encode($data);
+    }
+    
+     public function save_us(){
+        $usuario_id=$this->input->get('usuario_id');
+        $servicio_id=$this->input->get('servicio_id');
+        $this->Usuario_Establecimiento_model->save_us($usuario_id,$servicio_id);
+        $data="ok".$usuario_id . $servicio_id;
+        echo json_encode($data);
+    }
+    
+    public function delete_us(){
+        $usuario_id=$this->input->get('usuario_id');
+        $servicio_id=$this->input->get('servicio_id');
+        $this->Usuario_Establecimiento_model->delete_us($usuario_id,$servicio_id);
+        $data="ok".$usuario_id . $servicio_id;
+        echo json_encode($data);
+        
+    }
+    
     
     public function editar() {
         

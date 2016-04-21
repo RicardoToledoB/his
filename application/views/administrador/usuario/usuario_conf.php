@@ -15,7 +15,7 @@
         <link rel="stylesheet" href="<?php echo base_url("resources/lib/css/checkbox3.min.css"); ?>" />
         <link rel="stylesheet" href="<?php echo base_url("resources/lib/css/jquery.dataTables.min.css"); ?>" />
         <link rel="stylesheet" href="<?php echo base_url("resources/lib/css/dataTables.bootstrap.css"); ?>" />
-        <link rel="stylesheet" href="<?php echo base_url("resources/lib/css/select2.min.css"); ?>" />
+
 
         <!-- CSS App -->
         <link rel="stylesheet" href="<?php echo base_url("resources/css/style.css"); ?>" />
@@ -189,99 +189,130 @@
                                         </div>
                                     </div>
                                     <div class="card-body">
-                                        
 
-                                            <div class="panel panel-default">
-                                                <div class="panel-heading">Parametrizacion Usuario</div>
-                                                <div class="panel-body ">
-                                                    <div role="tabpanel" >
-                                                        <!-- Nav tabs -->
-                                                        <ul class="nav nav-tabs" role="tablist">
-                                                            <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Configurar Establecimientos</a></li>
-                                                            <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Configurar Servicios</a></li>
 
-                                                        </ul>
-                                                        <!-- Tab panes -->
-                                                        <div class="tab-content">
-                                                            <div role="tabpanel" class="tab-pane active" id="home">
-                                                                <div class="col-xs-12 col-md-6">
-                                                                    <?php foreach ($usuario as $user) { ?>
-                                                                        <input type="hidden" id="usuario_id" name="usuario_id" value="<?php echo $user->usuario_id ?>">
-                                                                        <div class="form-group">
-                                                                            <label for="usuario">Usuario Seleccionado</label>
-                                                                            <input type="text" class="form-control" disabled="disabled" value="<?php echo $user->nombre . " " . $user->apepat ?>">
+                                        <div class="panel panel-default">
+                                            <div class="panel-heading">Parametrizacion Usuario</div>
+                                            <div class="panel-body ">
+                                                <div role="tabpanel" >
+                                                    <!-- Nav tabs -->
+                                                    <ul class="nav nav-tabs" role="tablist">
+                                                        <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Configurar Establecimientos</a></li>
+                                                        <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Configurar Servicios</a></li>
 
-                                                                        </div>
-
-                                                                    <?php } ?>
+                                                    </ul>
+                                                    <!-- Tab panes -->
+                                                    <div class="tab-content">
+                                                        <div role="tabpanel" class="tab-pane active" id="home">
+                                                            <div class="col-xs-12 col-md-6">
+                                                                <?php foreach ($usuario as $user) { ?>
+                                                                    <input type="hidden" id="usuario_id" name="usuario_id" value="<?php echo $user->usuario_id ?>">
                                                                     <div class="form-group">
-                                                                        <label for="establecimiento_id">Establecimiento</label>
-                                                                        <select class="form-control" name="establecimiento_id" id="establecimiento_id" style="width: 100%">
-                                                                            <?php foreach ($establecimientos as $estab) { ?>
-                                                                                <option value=<?php echo $estab->establecimiento_id; ?>><?php echo $estab->nombre; ?></option>
-                                                                            <?php } ?>
-                                                                        </select>
-                                                                        <button id="add_establecimiento">add</button>
+                                                                        <label for="usuario">Usuario Seleccionado</label>
+                                                                        <input type="text" class="form-control" disabled="disabled" value="<?php echo $user->nombre . " " . $user->apepat ?>">
+
                                                                     </div>
 
-
-
-
+                                                                <?php } ?>
+                                                                <div class="form-group">
+                                                                    <label for="establecimiento_id">Establecimiento</label>
+                                                                    <select class="form-control" name="establecimiento_id" id="establecimiento_id" style="width: 100%">
+                                                                        <?php foreach ($establecimientos as $estab) { ?>
+                                                                            <option value=<?php echo $estab->establecimiento_id; ?>><?php echo $estab->nombre; ?></option>
+                                                                        <?php } ?>
+                                                                    </select>
+                                                                    <button id="add_establecimiento" class="form-control btn btn-primary">add</button>
                                                                 </div>
-                                                                <div class="col-xs-12 col-md-6">
-                                                                    <table id="tablaEstablecimiento" class="table table-striped table-hover table-condensed">
-                                                                        <thead>
-                                                                        <th>#</th>
-                                                                        <th>Establecimiento</th>
-                                                                        <th>Accion</th>
-                                                                        </thead>
-
-
-                                                                    </table>
 
 
 
-                                                                </div>
 
                                                             </div>
-                                                            <div role="tabpanel" class="tab-pane" id="profile">
-                                                                <div class="col-xs-12 col-md-6">
-                                                                    <div class="form-group">
-                                                                        <label for=rol">Rol</label>
-                                                                        <select class="form-control" name="rol_id" style="width: 100%">
-                                                                            <?php foreach ($rol as $r) { ?>
-                                                                                <option value=<?php echo $r->rol_id; ?>><?php echo $r->tipo ?></option>
-                                                                            <?php } ?>
-
-                                                                        </select>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-xs-12 col-md-6">
+                                                            <div class="col-xs-12 col-md-6">
+                                                                <table id="tablaEstablecimiento" class="table table-striped table-hover table-condensed">
+                                                                    <thead>
+                                                                    <th>#</th>
+                                                                    <th>Establecimiento</th>
+                                                                    <th>Accion</th>
+                                                                    </thead>
 
 
-                                                                </div>
+                                                                </table>
+
+
+
                                                             </div>
 
                                                         </div>
+                                                        <div role="tabpanel" class="tab-pane" id="profile">
+                                                            <div class="col-xs-12 col-md-6">
+                                                                <?php foreach ($usuario as $user) { ?>
+                                                                    <input type="hidden" id="usuario_id" name="usuario_id" value="<?php echo $user->usuario_id ?>">
+                                                                    <div class="form-group">
+                                                                        <label for="usuario">Usuario Seleccionado</label>
+                                                                        <input type="text" class="form-control" disabled="disabled" value="<?php echo $user->nombre . " " . $user->apepat ?>">
+
+                                                                    </div>
+
+                                                                <?php } ?>
+
+                                                                <div class="form-group">
+                                                                    <label for="establecimientos_id1">Establecimiento</label>
+                                                                    <select class="form-control" name="establecimiento_id1" id="establecimiento_id1" style="width: 100%">
+
+                                                                    </select>
+
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label for="servicio_id">Establecimiento</label>
+                                                                    <select class="form-control" name="servicio_id" id="servicio_id" style="width: 100%">
+
+                                                                    </select>
+                                                                    <button class="form-control btn btn-primary" id="add_servicio">add</button>
+
+                                                                </div>
+
+
+
+
+                                                            </div>
+                                                            <div class="col-xs-12 col-md-6">
+                                                                <table id="tablaServicio" class="table table-striped table-hover table-condensed">
+                                                                    <thead>
+                                                                    <th>#</th>
+                                                                    <th>Servicio</th>
+                                                                    <th>Establecimiento</th>
+                                                                    <th>Accion</th>
+                                                                    </thead>
+
+
+                                                                </table>
+
+
+
+                                                            </div>
+                                                        </div>
+
                                                     </div>
-
-
-
-
-
-
                                                 </div>
-                                                <div class="panel-footer">
-                                                    <div class="box-tools m-b-15">
-                                                        <div class="input-group">
-                                                           <!-- <input type="submit"class="btn btn-primary" value="Agregar">-->
 
 
-                                                        </div>
+
+
+
+
+                                            </div>
+                                            <div class="panel-footer">
+                                                <div class="box-tools m-b-15">
+                                                    <div class="input-group">
+                                                       <!-- <input type="submit"class="btn btn-primary" value="Agregar">-->
+
+
                                                     </div>
                                                 </div>
                                             </div>
-                                     
+                                        </div>
+
                                     </div>
                                 </div>
                             </div>
@@ -302,11 +333,9 @@
                     <script type="text/javascript" src="<?php echo base_url("resources/lib/js/jquery.matchHeight-min.js"); ?>"></script>
                     <script type="text/javascript" src="<?php echo base_url("resources/lib/js/jquery.dataTables.min.js"); ?>"></script>
                     <script type="text/javascript" src="<?php echo base_url("resources/lib/js/dataTables.bootstrap.min.js"); ?>"></script>
-                    <script type="text/javascript" src="<?php echo base_url("resources/lib/js/select2.full.min.js"); ?>"></script>
                     <script type="text/javascript" src="<?php echo base_url("resources/lib/js/ace/ace.js"); ?>"></script>
                     <script type="text/javascript" src="<?php echo base_url("resources/lib/js/ace/mode-html.js"); ?>"></script>
                     <script type="text/javascript" src="<?php echo base_url("resources/lib/js/ace/theme-github.js"); ?>"></script>
-                    <script type="text/javascript" src="<?php echo base_url("resources/js/app.js"); ?>"></script>
 
                     <script src="<?php echo base_url("resources/lib/js/moment-with-locales.js"); ?>"></script>
                     <script src="<?php echo base_url("resources/lib/js/bootstrap-datetimepicker.js"); ?>"></script>
@@ -314,38 +343,40 @@
 
                     <script type="text/javascript">
                         $(document).ready(function () {
+                            cargar_establecimientos();
+                            cargar_establecimientos1();
+                            cargar_servicios();
+                            /* INICIO TAB ESTABLECIMIENTOS */
                             $("#add_establecimiento").click(function () {
                                 establecimiento_id = $("#establecimiento_id").val();
                                 usuario_id = $("#usuario_id").val();
                                 //alert("Establecimiento:" + establecimiento_id);
 
-                                $.ajax("http://192.168.1.33:8888/his/index.php/administrador/usuario/save_ue?usuario_id="+usuario_id+"&establecimiento_id="+establecimiento_id, {
+                                $.ajax("http://localhost:8888/his/index.php/administrador/usuario/save_ue?usuario_id=" + usuario_id + "&establecimiento_id=" + establecimiento_id, {
                                     type: "post",
                                     dataType: 'json',
                                     contentType: 'application/json',
                                     mimeType: 'application/json',
                                     success: function (result) {
                                         cargar_establecimientos();
-                                        alert(result);
-                                       /* $("#mensaje").html("" + result);
-                                        if ($("#mensaje").val() != null) {
-                                            setTimeout(function () {
-                                                $("#mensaje").html("");
-                                            }, 5000);
-                                        }*/
+                                        cargar_establecimientos1();
+                                        cargar_servicios();
+                                        //alert(result);
+                                        /* $("#mensaje").html("" + result);
+                                         if ($("#mensaje").val() != null) {
+                                         setTimeout(function () {
+                                         $("#mensaje").html("");
+                                         }, 5000);
+                                         }*/
                                     },
                                     error: function (result) {
                                         console.error("Errores:", result);
                                     }
                                 });
-
-
                             });
-                            cargar_establecimientos();
-
                             function cargar_establecimientos() {
                                 $valor = $("#usuario_id").val();
-                                $.ajax('http://192.168.1.33:8888/his/index.php/administrador/usuario/enviar_establecimientos?id=' + $valor, {
+                                $.ajax('http://localhost:8888/his/index.php/administrador/usuario/enviar_establecimientos?id=' + $valor, {
                                     type: "post",
                                     dataType: 'json',
                                     contentType: 'application/json',
@@ -360,10 +391,121 @@
                                             $("#tablaEstablecimiento").append("<tr>\n\
                                                                                 <td>" + value.establecimiento_id + "</td>\n\
                                                                                 <td>" + value.nombre + "</td>\n\
-                                                                                <td>" + "<button>eliminar</button>" + "</td>\n\            \n\
+                                                                                <td>" + "<button class='delete btn btn-default btn-xs' value='" + value.establecimiento_id + "'>eliminar</button>" + "</td>\n\            \n\
                                                                                 </tr>");
                                         });
                                         $("#tablaEstablecimiento").append("</tbody>");
+                                        //FUNCION ELIMINAR ESTABLECIMIENTOS SELECCIONADOS
+                                        $(".delete").click(function () {
+                                            var establecimiento_id = $(this).attr('value');
+                                            var usuario_id = $("#usuario_id").val();
+                                            //console.log(establecimiento_id + usuario_id);
+                                            $.ajax("http://localhost:8888/his/index.php/administrador/usuario/delete_ue?usuario_id=" + usuario_id + "&establecimiento_id=" + establecimiento_id, {
+                                                type: "post",
+                                                dataType: 'json',
+                                                contentType: 'application/json',
+                                                mimeType: 'application/json',
+                                                success: function (result) {
+                                                    cargar_establecimientos();
+                                                    cargar_establecimientos1();
+                                                    cargar_servicios();
+                                                   // alert(result);
+                                                   
+                                                },
+                                                error: function (result) {
+                                                    console.error("Errores:", result);
+                                                }
+                                            });
+
+
+
+                                        });
+
+                                    },
+                                    error: function (result) {
+                                        console.error("Errores:", result);
+                                    }
+
+
+                                });
+
+                            }
+
+                            /* FIN TAB ESTABLECIMIENTOS */
+
+                            /* INICIO TAB SERVICIOS */
+
+                            function cargar_servicios() {
+                                $valor = $("#usuario_id").val();
+                                $.ajax('http://localhost:8888/his/index.php/administrador/usuario/carga_servicios?id=' + $valor, {
+                                    type: "post",
+                                    dataType: 'json',
+                                    contentType: 'application/json',
+                                    mimeType: 'application/json',
+                                    success: function (result) {
+                                        //console.log("El valor enviado es:", result);
+                                        $("#tablaServicio").empty();
+                                        $("#tablaServicio").append("<thead><th>#</th><th>Servicio</th><th>Establecimiento</th><th>Accion</th></thead><tbody>");
+                                        $.each(result, function (index, value) {
+                                            //console.log(value.establecimiento_id);
+                                            //console.log(value.nombre);
+                                            $("#tablaServicio").append("<tr>\n\
+                                                                                <td>" + value.servicio_id + "</td>\n\
+                                                                                <td>" + value.servicio + "</td>\n\
+                                                                                <td>" + value.establecimiento + "</td>\n\
+                                                                                <td>" + "<button button class='delete btn btn-default btn-xs' value='" + value.servicio_id + "'>eliminar</button>" + "</td>\n\            \n\
+                                                                                </tr>");
+                                        });
+                                        $("#tablaServicio").append("</tbody>");
+                                        
+                                        $(".delete").click(function(){
+                                            var servicio_id = $(this).attr('value');
+                                            var usuario_id = $("#usuario_id").val();
+                                            //console.log(establecimiento_id + usuario_id);
+                                            $.ajax("http://localhost:8888/his/index.php/administrador/usuario/delete_us?usuario_id=" + usuario_id + "&servicio_id=" + servicio_id, {
+                                                type: "post",
+                                                dataType: 'json',
+                                                contentType: 'application/json',
+                                                mimeType: 'application/json',
+                                                success: function (result) {
+                                                    //cargar_establecimientos();
+                                                    //cargar_establecimientos1();
+                                                    cargar_servicios();
+                                                    //alert(result);
+                                                   
+                                                },
+                                                error: function (result) {
+                                                    console.error("Errores:", result);
+                                                }
+                                            });
+                                           
+                                           
+                                        });
+                                        
+                                    },
+                                    error: function (result) {
+                                        console.error("Errores:", result);
+                                    }
+                                });
+                            }
+
+                            function cargar_establecimientos1() {
+                                $valor = $("#usuario_id").val();
+                                $.ajax('http://localhost:8888/his/index.php/administrador/usuario/enviar_establecimientos?id=' + $valor, {
+                                    type: "post",
+                                    dataType: 'json',
+                                    contentType: 'application/json',
+                                    mimeType: 'application/json',
+                                    success: function (result) {
+                                        //console.log("El valor enviado es:", result);
+                                        $("#establecimiento_id1").empty();
+                                        $("#establecimiento_id1").append("<option value=0 selected='selected' disabled>-- Seleccionar Establecimiento --</option>");
+                                        $.each(result, function (index, value) {
+                                            //console.log(value.establecimiento_id);
+                                            //console.log(value.nombre);
+                                            $("#establecimiento_id1").append("<option value='" + value.establecimiento_id + "'>" + value.nombre + "</option");
+                                        });
+                                        //$("#tablaEstablecimiento").append("</tbody>");
 
                                     },
                                     error: function (result) {
@@ -371,6 +513,57 @@
                                     }
                                 });
                             }
+
+                            $("#establecimiento_id1").change(function () {
+                                //alert("cambiado"+$("#establecimiento_id1").val());
+                                console.log("ESTABLECIMIENTO ID CAMBIADO");
+                                $valor = $("#establecimiento_id1").val();
+                                $.ajax('http://localhost:8888/his/index.php/administrador/usuario/enviar_servicios?id=' + $valor, {
+                                    type: "post",
+                                    dataType: 'json',
+                                    contentType: 'application/json',
+                                    mimeType: 'application/json',
+                                    success: function (result) {
+                                        //console.log("El valor enviado es:", result);
+                                        $("#servicio_id").empty();
+                                        $("#servicio_id").append("<option value=0 selected='selected' disabled>-- Seleccionar Servicio --</option>");
+                                        $.each(result, function (index, value) {
+                                            console.log(value.servicio_id);
+                                            console.log(value.nombre);
+                                            $("#servicio_id").append("<option value='" + value.servicio_id + "'>" + value.nombre + "</option");
+                                        });
+                                        //$("#tablaEstablecimiento").append("</tbody>");
+
+                                    },
+                                    error: function (result) {
+                                        console.error("Errores:", result);
+                                    }
+                                });
+                            });
+                            $("#add_servicio").click(function () {
+                                servicio_id = $("#servicio_id").val();
+                                usuario_id = $("#usuario_id").val();
+                                $.ajax("http://localhost:8888/his/index.php/administrador/usuario/save_us?usuario_id=" + usuario_id + "&servicio_id=" + servicio_id, {
+                                    type: "post",
+                                    dataType: 'json',
+                                    contentType: 'application/json',
+                                    mimeType: 'application/json',
+                                    success: function (result) {
+                                        cargar_servicios();
+                                        //alert(result);
+                                        /* $("#mensaje").html("" + result);
+                                         if ($("#mensaje").val() != null) {
+                                         setTimeout(function () {
+                                         $("#mensaje").html("");
+                                         }, 5000);
+                                         }*/
+                                    },
+                                    error: function (result) {
+                                        console.error("Errores:", result);
+                                    }
+                                });
+                            });
+                            /** INICIO TAB SERVICIOS **/
 
 
 
